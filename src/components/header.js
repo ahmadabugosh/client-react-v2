@@ -10,9 +10,7 @@ class Header extends Component  {
 	renderLinks() {
 		if(this.props.authenticated){
 
-return <li className="nav-item">
-<Link to="/signout" className="nav-link"> Sign Out </Link>
-</li>
+return <li className="nav-item"> <Link to="/signout" className="nav-link"> Sign Out </Link> </li>
 		} else {
 			return [
 <li className="nav-item">
@@ -34,9 +32,9 @@ return <li className="nav-item">
 			<nav className="navbar navbar-light">
 			<Link to="/" className="navbar-brand"> Redux Auth </Link>
 			<ul className="nav navbar-nav">
-			<li className="nav-item">
+			
 			{this.renderLinks()}
-			</li>
+		
 			</ul>
 			</nav>
 		);
@@ -55,4 +53,4 @@ function mapStateToProps(state)
 
 }
 
-export default connect()(Header);
+export default connect(mapStateToProps)(Header);
