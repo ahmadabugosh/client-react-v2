@@ -5,17 +5,32 @@ import * as actions from '../../actions';
 
 
 const renderInput = field => {
-    const { input, type } = field;
+    const { input, type, meta: { touched, error } } = field;
     return (
         <div>
             <input {...input} type={type} className="form-control" />
+               {touched && error && <span className="error">{error}</span>}
         </div>
     );
 }
 
 class Signup extends Component {
 	 handleFormSubmit({ email, password }) {    
-        this.props.signinUser({ email, password, passwordConfirmation }, this.props.history);
+        this.props.signupUser({ email, password}, this.props.history);
+    }
+
+    renderAlert()
+    {
+    	if(this.props.errorMessage) {
+    		return (
+
+    		<div className="alert alert-danger">
+    		<strong>Oops!</strong> {this.props.errorMessage}
+    		</div>
+
+    		);
+    	}
+
     }
 
 render(){
@@ -35,6 +50,7 @@ return(
                     <label>Password:</label>
                     <Field name="password" 
                         type="password" component={renderInput} />
+
                 </div>
 
                 <div className="form-group">
@@ -42,6 +58,7 @@ return(
                     <Field name="passwordConfirmation" 
                         type="password" component={renderInput} />
                 </div>
+                {this.renderAlert()}
                 
                 <button action="submit" className="btn btn-primary">Sign Up</button>
             </form>
@@ -57,12 +74,41 @@ return(
 
 	}
 
+	function validate(formProps)
+	{
+		const errors={};
+		if(!formProps.email)
+		{
+errors.email='Please enter an email';
+
+		}
+		if(!formProps.password)
+		{
+errors.password='Please enter a password';
+
+		}
+
+		if(!formProps.passwordConfirmation)
+		{
+errors.passwordConfirmation='Please enter a password confirmation';
+
+		}
+
+		if(formProps.password!== formProps.passwordConfirmation){
+
+		errors.password='Passwords must match';
+		}
+
+		console.log(formProps);
+		return errors;
+	}
+
 	function mapStateToProps(state) {
     return { form: state.form, errorMessage:state.auth.error };
 }
 
 Signup = connect(mapStateToProps, actions)(Signup);
 Signup = reduxForm({
- form: 'signup'
+ form: 'signup', validate
 })(Signup);
 export default Signup;

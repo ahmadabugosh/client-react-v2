@@ -42,6 +42,41 @@ dispatch(authError('Bad login info'));
 	}
 }
 
+export function signupUser ({email, password}) {
+
+	return function (dispatch)
+	{
+axios.post(`${ROOT_URL}/signup`,{email, password})
+.then(response => {
+
+
+localStorage.setItem('token', response.data.token);
+
+browserHistory.push('/feature');
+
+dispatch({type: AUTH_USER});
+
+})
+.catch((error)=> {
+
+//request good , update state, save jwt token, redirect to success page
+
+//update if user is authenticated
+
+
+//save jwt token
+
+//request bad, show error to user
+dispatch(authError(error.response.data.error));
+
+
+
+});
+
+
+	}
+}
+
 
 export function authError(error) {
 
