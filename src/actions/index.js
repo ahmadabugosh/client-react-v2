@@ -15,9 +15,8 @@ axios.post(`${ROOT_URL}/signin`,{email, password})
 
 localStorage.setItem('token', response.data.token);
 console.log(response.data.token);
-browserHistory.push('/feature');
-
 dispatch({type: AUTH_USER});
+browserHistory.push('/feature');
 
 })
 .catch(()=> {
@@ -48,13 +47,9 @@ export function signupUser ({email, password}) {
 	{
 axios.post(`${ROOT_URL}/signup`,{email, password})
 .then(response => {
-
-
 localStorage.setItem('token', response.data.token);
-
-browserHistory.push('/feature');
-
 dispatch({type: AUTH_USER});
+browserHistory.push('/feature');
 
 })
 .catch((error)=> {
