@@ -10,7 +10,9 @@ class Header extends Component  {
 	renderLinks() {
 		if(this.props.authenticated){
 
-return <li className="nav-item"> <Link to="/signout" className="nav-link"> Sign Out </Link> </li>
+return[
+<li className="nav-item"> <Link to="/signout" className="nav-link"> Sign Out </Link> </li>,
+<li className="nav-item"><Link to="/volunteer" className="nav-link" key={2}>Volunteer</Link> </li>];
 		} else {
 			return [
 <li className="nav-item">
@@ -19,6 +21,7 @@ return <li className="nav-item"> <Link to="/signout" className="nav-link"> Sign 
 <li className="nav-item">
 <Link to="/signup" className="nav-link" key={2}>Sign Up</Link>
 </li>
+
 ];
 
 		}

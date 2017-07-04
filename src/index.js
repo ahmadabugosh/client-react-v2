@@ -35,9 +35,11 @@ ReactDOM.render(
   <Route path="signin" component ={Signin} />
   <Route path="feature" component ={RequireAuth(Feature)} />
    <Route path="signout" component ={Signout} />
-      <Route path="signup" component ={Signup} />
+   <Route path="signup" component ={Signup} />
+	<Route path="volunteer" component={VolunteerForm} />
   </Route>
-  <Route path="volunteer" component={VolunteerForm} />
+
+  
   </Router>
 
   </Provider>
