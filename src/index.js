@@ -7,6 +7,7 @@ import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
 import App from './components/app';
+import VolunteerForm from './components/volunteer_form';
 import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
 
@@ -36,6 +37,7 @@ ReactDOM.render(
    <Route path="signout" component ={Signout} />
       <Route path="signup" component ={Signup} />
   </Route>
+  <Route path="volunteer" component={VolunteerForm} />
   </Router>
 
   </Provider>
