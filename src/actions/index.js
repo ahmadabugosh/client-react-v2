@@ -105,3 +105,30 @@ headers:{authorization:localStorage.getItem('token')}
 }
 
 }
+
+// action creator to handle post action to /activity route
+// adds volunteer instance to redux store?
+export function recordVolunteerActivity({ name,	description, hours,	mediaUrl }) {
+	return function(dispatch) {
+		// console.log(hours, name, description, mediaUrl);
+
+		// submit fields to the server
+		axios.post(`${ROOT_URL}/activity`, {
+			name,
+			hours,
+			description,
+			mediaUrl
+		})
+			.then(response => {
+				if (response.data.success) {
+					
+					// dispatch volunteer activity to redux? 
+
+				}
+			})
+			.catch(() => {
+				// Bad request: display error to user
+			});
+	}
+
+}
