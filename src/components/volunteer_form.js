@@ -74,6 +74,29 @@ const renderSelectField = ({ input, type, meta: { touched, error }, children }) 
   </div>
 );
 
+// File Input from https://github.com/erikras/redux-form/issues/1989
+const adaptFileEventToValue = delegate =>
+  e => delegate(e.target.files[0])
+
+const FileInput = ({
+  input: {
+    value: omitValue,
+  onChange,
+  onBlur,
+  ...inputProps,
+  },
+  meta: omitMeta,
+  ...props,
+}) =>
+  <input
+    onChange={adaptFileEventToValue(onChange)}
+    onBlur={adaptFileEventToValue(onBlur)}
+    type="file"
+    {...inputProps}
+    {...props}
+  />
+
+// Form component
 const VolunteerForm = (props) => {
   const handleFormSubmit = (fields) => {
     props.recordVolunteerActivity({...fields})
@@ -110,16 +133,12 @@ const VolunteerForm = (props) => {
       <div>
         <Field placeholder='Short Description' name='description' textarea={true} component={renderField} />
       </div>
-      {/*
-
-      File upload not working yet
-      TODO: Make functioning file upload
-
-      <div>
-        <Field name='mediaUrl' component='input' type='file' />
-      </div>
       
-      */}
+      {/* File upload field: sends file object to action creator */}
+      <Field
+        component={FileInput}
+        name="mediaUrl"
+      />
       <button type='submit'>Record Your Volunteering</button>
     </form>
   );
