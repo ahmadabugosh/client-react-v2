@@ -111,7 +111,7 @@ headers:{authorization:localStorage.getItem('token')}
 export function recordVolunteerActivity({ name,	description, hours,	mediaUrl }) {
 	return function(dispatch) {
 		console.log(hours, name, description, mediaUrl);
-
+		
 		// TODO: figure out how to handle the mediaUrl file object and how to submit that to the server
 
 		// submit fields to the server
