@@ -6,6 +6,7 @@ import {Router, Route, IndexRoute,browserHistory} from 'react-router';
 import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
+import UserProfile from './components/user_profile';
 import App from './components/app';
 import VolunteerForm from './components/volunteer_form';
 import reduxThunk from 'redux-thunk';
@@ -37,6 +38,7 @@ ReactDOM.render(
    <Route path="signout" component ={Signout} />
    <Route path="signup" component ={Signup} />
 	<Route path="volunteer" component={VolunteerForm} />
+  <Route path='userprofile' component={UserProfile} />
   </Route>
 
   

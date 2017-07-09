@@ -128,6 +128,7 @@ const VolunteerForm = (props) => {
 
       </div>
       <div>
+        {/* TODO: Prevent user from entering negative numbers */}
         <Field placeholder='Number of Hours' name='hours' component={renderField} type='number' />
       </div>
       <div>
@@ -135,6 +136,7 @@ const VolunteerForm = (props) => {
       </div>
       
       {/* File upload field: sends file object to action creator */}
+      {/* TODO: add validation for attached file */}
       <Field
         component={FileInput}
         name="mediaUrl"
