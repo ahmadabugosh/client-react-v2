@@ -1,33 +1,50 @@
-import React from 'react';
+import React ,{Component} from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import * as actions from '../actions';
+import axios from 'axios';
+const ROOT_URL='https://i7san-api.herokuapp.com';
 
 // TEMP
 // Will be populated from the server, set by admins
 // exaxt data structure to be determined
-const activities = [
-  {
-    displayName: "Donate Blood",
-    value: 'donate_blood',
-    points: 20
-  },
-  {
-    displayName: "Beach Clean up",
-    value: 'beach_cleanup',
-    points: 5
-  },
-  {
-    displayName: 'Elderly Home',
-    value: 'elderly_home',
-    points: 25
-  },
-  {
-    displayName: 'Charity Drive',
-    value: 'charity_drive',
-    points: 10
-  }
-]
+// const activities = [
+//   {
+//     displayName: "Donate Blood",
+//     value: 'donate_blood',
+//     points: 20
+//   },
+//   {
+//     displayName: "Beach Clean up",
+//     value: 'beach_cleanup',
+//     points: 5
+//   },
+//   {
+//     displayName: 'Elderly Home',
+//     value: 'elderly_home',
+//     points: 25
+//   },
+//   {
+//     displayName: 'Charity Drive',
+//     value: 'charity_drive',
+//     points: 10
+//   }
+// ]
+let activities=[];
+
+
+ 
+//Not sure what to do?
+ //componentDidMount= function(){
+
+axios.get(`${ROOT_URL}/activities`)
+.then(response => {
+activities=response.data;
+
+});
+//}
+
+
 
 // validation function, tests each field on change
 const validate = values => {
@@ -105,9 +122,9 @@ const VolunteerForm = (props) => {
   const renderOptions = () => {
     const optionsList = activities.map(activity => 
       <option 
-        key={activity.value} 
-        value={activity.value}>
-        {activity.displayName} - {activity.points} Points / Hour
+        key={activity.shortUrl} 
+        value={activity.shortUrl}>
+        {activity.name} - {activity.points} Points / Hour
       </option>)
     
     // add blank first option, acts as placeholder text for select field component
@@ -150,6 +167,7 @@ const VolunteerForm = (props) => {
 export default connect(null, actions)(
   reduxForm({
     form: 'volunteer',
-    validate
+    validate,
+    enableReinitialize : true
   })(VolunteerForm)
 );
