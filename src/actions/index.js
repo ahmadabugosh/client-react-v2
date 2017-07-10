@@ -110,7 +110,9 @@ headers:{authorization:localStorage.getItem('token')}
 // adds volunteer instance to redux store?
 export function recordVolunteerActivity({ name,	description, hours,	mediaUrl }) {
 	return function(dispatch) {
-		// console.log(hours, name, description, mediaUrl);
+		console.log(hours, name, description, mediaUrl);
+		
+		// TODO: figure out how to handle the mediaUrl file object and how to submit that to the server
 
 		// submit fields to the server
 		axios.post(`${ROOT_URL}/activity`, {
@@ -121,8 +123,12 @@ export function recordVolunteerActivity({ name,	description, hours,	mediaUrl }) 
 		})
 			.then(response => {
 				if (response.data.success) {
-					
-					// dispatch volunteer activity to redux? 
+				
+					/**
+					 * dispatch action to display message to user?
+					 * inform user that activity has been successfully recorded
+					 * clear or hide form, display button that allows the user enter another activity
+					 */
 
 				}
 			})
