@@ -143,7 +143,7 @@ class VolunteerForm extends Component {
       <form onSubmit={handleSubmit(this.handleFormSubmit)}>
         {/* form body */}
         <div>
-          <Field placeholder='Volunteer Activity' name='name' component={renderSelectField} required>
+          <Field placeholder='Volunteer Activity' name='activity' component={renderSelectField} required>
             {this.renderOptions()}
           </Field>
 

@@ -91,6 +91,7 @@ export function signoutUser() {
 
 }
 
+
 export function fetchMessage(){
 return function(dispatch){
 
@@ -108,22 +109,25 @@ headers:{authorization:localStorage.getItem('token')}
 
 // action creator to handle post action to /activity route
 // adds volunteer instance to redux store?
-export function recordVolunteerActivity({ name,	description, hours,	mediaUrl }) {
+export function recordVolunteerActivity({ activity,	description, hours,	mediaUrl }) {
 	return function(dispatch) {
-		console.log(hours, name, description, mediaUrl);
+		console.log(hours, activity, description,mediaUrl);
 		
 		// TODO: figure out how to handle the mediaUrl file object and how to submit that to the server
 
 		// submit fields to the server
-		axios.post(`${ROOT_URL}/activity`, {
-			name,
+		axios.post(`${ROOT_URL}/volunteering`, {
+			activity,
 			hours,
 			description,
 			mediaUrl
-		})
+		},{
+headers:{authorization:localStorage.getItem('token')}
+
+	})
 			.then(response => {
 				if (response.data.success) {
-				
+				alert('success!');
 					/**
 					 * dispatch action to display message to user?
 					 * inform user that activity has been successfully recorded
