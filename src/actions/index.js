@@ -137,7 +137,7 @@ headers:{authorization:localStorage.getItem('token')}
 				}
 			})
 			.catch(() => {
-				// Bad request: display error to user
+				dispatch(authError('Ooops looks like we currently record your volunteering activity. Try re-entering your fields and try again!'));
 			});
 	}
 
