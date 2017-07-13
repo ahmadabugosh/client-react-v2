@@ -17,6 +17,9 @@ import RequireAuth from './components/auth/require_auth';
 import Feature from './components/feature';
 import Welcome from './components/welcome';
 
+
+import VolunteerRecord from './components/volunteer_record';
+
 import {AUTH_USER} from './actions/types';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -37,8 +40,9 @@ ReactDOM.render(
   <Route path="feature" component ={RequireAuth(Feature)} />
    <Route path="signout" component ={Signout} />
    <Route path="signup" component ={Signup} />
-	<Route path="volunteer" component={VolunteerForm} />
+	<Route path="volunteer" component={RequireAuth(VolunteerForm)} />
   <Route path='userprofile' component={UserProfile} />
+    <Route path='volunteering-success' component={VolunteerRecord} />
   </Route>
 
   

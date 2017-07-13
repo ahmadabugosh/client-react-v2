@@ -11,10 +11,7 @@ export function signinUser ({email, password})
 //submit email/password to server
 axios.post(`${ROOT_URL}/signin`,{email, password})
 .then(response => {
-
-
 localStorage.setItem('token', response.data.token);
-console.log(response.data.token);
 dispatch({type: AUTH_USER});
 browserHistory.push('/feature');
 
@@ -32,6 +29,7 @@ browserHistory.push('/feature');
 
 //request bad, show error to user
 dispatch(authError('Bad login info'));
+
 
 
 
@@ -127,7 +125,7 @@ headers:{authorization:localStorage.getItem('token')}
 	})
 			.then(response => {
 				if (response.data.success) {
-				alert('success!');
+				browserHistory.push('/volunteering-success');
 					/**
 					 * dispatch action to display message to user?
 					 * inform user that activity has been successfully recorded
@@ -137,7 +135,7 @@ headers:{authorization:localStorage.getItem('token')}
 				}
 			})
 			.catch(() => {
-				dispatch(authError('Ooops looks like we currently record your volunteering activity. Try re-entering your fields and try again!'));
+				dispatch(authError("Ooops looks like we can't record your volunteering activity. Try re-entering your fields and try again!"));
 			});
 	}
 

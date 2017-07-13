@@ -26,9 +26,18 @@ class Signin extends Component {
   }
 
   startLoading(){
-this.setState({
+  	this.setState({
         loading: true
     });
+setTimeout(() => {
+  this.setState({
+        loading: false
+    });
+}, 3000)
+
+
+
+
 
   }
     handleFormSubmit({ email, password }) {    
@@ -37,10 +46,9 @@ this.setState({
 
     renderAlert()
     {
+    	
     	if(this.props.errorMessage) {
-    		this.setState({
-        loading: false
-    });
+    		
     		return (
 
     		<div className="alert alert-danger">
@@ -49,6 +57,8 @@ this.setState({
 
 
     		);
+
+
     	}
 
     }

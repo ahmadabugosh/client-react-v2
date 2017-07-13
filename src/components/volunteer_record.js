@@ -6,7 +6,7 @@ import AlertContainer from 'react-alert';
 
 
 
-class Feature extends Component{
+class VolunteerRecord extends Component{
 constructor(props){
     super(props);
     this.alertOptions = {
@@ -17,12 +17,6 @@ constructor(props){
       transition: 'scale'
     };
   }
-	componentWillMount(){
-
-		this.props.fetchMessage();
-	
-
-	}
 
 	componentDidMount(){
 
@@ -32,21 +26,22 @@ this.showAlert();
  
  
   showAlert(){
-    this.msg.show('Welcome To i7san!', {
+    this.msg.show('Volunteering Recorded!', {
       time: 2000,
       type: 'success',
       icon: <img src="https://image.flaticon.com/icons/png/128/477/477801.png" />
     });
   }
 
- //  {this.props.message}
+ //  <button onClick={this.showAlert.bind(this)}>Show Alert</button>
 
 render(){
 	return(
 
 		<div>
-		<h3>Welcome to i7san!</h3>
-		<h3><a href="./volunteer">Start Volunteering!</a></h3>
+	<h3> Thanks for recording your volunteering activity! </h3>
+  <h3> <a href="./volunteer"> Volunteer More!</a></h3>
+  <h3> Or <a href="./userprofile"> View Your Impact!</a></h3>
 <AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
       
 		</div>
@@ -57,9 +52,5 @@ render(){
 
 }
 
-function mapStateToProps(state){
 
-	return {message: state.auth.message};
-}
-
-export default connect (mapStateToProps,actions)(Feature);
+export default VolunteerRecord;

@@ -1,3 +1,3 @@
 import React from 'react';
 
-export default() => <div> Welcome to our basic authentication React app</div>;
+export default() => <div> Welcome To i7san: Volunteering Made Fun!</div>;
