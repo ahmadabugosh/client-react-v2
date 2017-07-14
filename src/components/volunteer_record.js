@@ -27,7 +27,7 @@ this.showAlert();
  
   showAlert(){
     this.msg.show('Volunteering Recorded!', {
-      time: 2000,
+      time: 4000,
       type: 'success',
       icon: <img src="https://image.flaticon.com/icons/png/128/477/477801.png" />
     });

@@ -29,7 +29,7 @@ const Impact = (props) => {
         <img src={loremIpsumImageUrl} />
         <div style={tempDivStyle}>
           <h4>{volunteering.hours} Volunteering Hours</h4>
-          <h4>You rank ${volunteering.rank} in Saudi Arabia</h4>
+          <h4>You rank {volunteering.rank} in Saudi Arabia</h4>
         </div>
         <div style={tempDivStyle}>
           {/* Render Dynamically */}
@@ -40,7 +40,7 @@ const Impact = (props) => {
         <img src={loremIpsumImageUrl}/>
         <div style={tempDivStyle}>
           <h4>{friends.amount} Friends</h4>
-          <h5>You rank ${friends.rank} among your friends</h5>
+          <h5>You rank {friends.rank} among your friends</h5>
         </div>
         <div style={tempDivStyle}>
           {/* Render Dynamically */}

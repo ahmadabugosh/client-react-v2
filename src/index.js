@@ -41,7 +41,7 @@ ReactDOM.render(
    <Route path="signout" component ={Signout} />
    <Route path="signup" component ={Signup} />
 	<Route path="volunteer" component={RequireAuth(VolunteerForm)} />
-  <Route path='userprofile' component={UserProfile} />
+  <Route path='my-impact' component={UserProfile} />
     <Route path='volunteering-success' component={VolunteerRecord} />
   </Route>
 
