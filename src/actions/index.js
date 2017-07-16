@@ -11,10 +11,7 @@ export function signinUser ({email, password})
 //submit email/password to server
 axios.post(`${ROOT_URL}/signin`,{email, password})
 .then(response => {
-
-
 localStorage.setItem('token', response.data.token);
-console.log(response.data.token);
 dispatch({type: AUTH_USER});
 browserHistory.push('/feature');
 
@@ -32,6 +29,7 @@ browserHistory.push('/feature');
 
 //request bad, show error to user
 dispatch(authError('Bad login info'));
+
 
 
 
@@ -91,6 +89,7 @@ export function signoutUser() {
 
 }
 
+
 export function fetchMessage(){
 return function(dispatch){
 
@@ -108,22 +107,25 @@ headers:{authorization:localStorage.getItem('token')}
 
 // action creator to handle post action to /activity route
 // adds volunteer instance to redux store?
-export function recordVolunteerActivity({ name,	description, hours,	mediaUrl }) {
+export function recordVolunteerActivity({ activity,	description, hours,	mediaUrl }) {
 	return function(dispatch) {
-		console.log(hours, name, description, mediaUrl);
+		console.log(hours, activity, description,mediaUrl);
 		
 		// TODO: figure out how to handle the mediaUrl file object and how to submit that to the server
 
 		// submit fields to the server
-		axios.post(`${ROOT_URL}/activity`, {
-			name,
+		axios.post(`${ROOT_URL}/volunteering`, {
+			activity,
 			hours,
 			description,
 			mediaUrl
-		})
+		},{
+headers:{authorization:localStorage.getItem('token')}
+
+	})
 			.then(response => {
 				if (response.data.success) {
-				
+				browserHistory.push('/volunteering-success');
 					/**
 					 * dispatch action to display message to user?
 					 * inform user that activity has been successfully recorded
@@ -133,7 +135,7 @@ export function recordVolunteerActivity({ name,	description, hours,	mediaUrl }) 
 				}
 			})
 			.catch(() => {
-				// Bad request: display error to user
+				dispatch(authError("Ooops looks like we can't record your volunteering activity. Try re-entering your fields and try again!"));
 			});
 	}
 

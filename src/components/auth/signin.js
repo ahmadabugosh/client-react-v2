@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
+import { RingLoader } from 'react-spinners';
+
  
 const renderInput = field => {
     const { input, type } = field;
@@ -13,20 +15,50 @@ const renderInput = field => {
 }
 
 class Signin extends Component {
+
+	  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: false
+    }
+    this.startLoading = this.startLoading.bind(this);
+  }
+
+  startLoading(){
+  	this.setState({
+        loading: true
+    });
+setTimeout(() => {
+  this.setState({
+        loading: false
+    });
+}, 3000)
+
+
+
+
+
+  }
     handleFormSubmit({ email, password }) {    
         this.props.signinUser({ email, password }, this.props.history);
     }
 
     renderAlert()
     {
+    	
     	if(this.props.errorMessage) {
+    		
     		return (
 
     		<div className="alert alert-danger">
     		<strong>Oops!</strong> {this.props.errorMessage}
     		</div>
 
+
     		);
+
+
     	}
 
     }
@@ -48,7 +80,8 @@ class Signin extends Component {
                         type="password" component={renderInput} />
                 </div>
                 {this.renderAlert()}
-                <button action="submit" className="btn btn-primary">Sign in</button>
+                <RingLoader color={'#123abc'} loading={this.state.loading} />
+                <button action="submit" className="btn btn-primary" onClick={this.startLoading}>Sign in</button>
             </form>
         );
     }

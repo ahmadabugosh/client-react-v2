@@ -34,8 +34,8 @@ const ROOT_URL='https://i7san-api.herokuapp.com';
 // validation function, tests each field on change
 const validate = values => {
   const errors = {};
-  if (!values.name) {
-    errors.name = 'Please select an activity'
+  if (!values.activity) {
+    errors.activity = 'Please select an activity'
   }
   if (!values.hours) {
     errors.hours = 'Please the number of hours you volunteered'
@@ -62,7 +62,7 @@ const renderField = ({
       : <input {...input} type={type} />
     }
     {touched && 
-    (error && <span>{error}</span>)}
+    (error && <span className="error"> {error}</span>)}
   </div>
 );
 
@@ -72,7 +72,7 @@ const renderSelectField = ({ input, type, meta: { touched, error }, children }) 
     <select {...input}>
       {children}
     </select>
-    {touched && error && <span>{error}</span>}
+    {touched && error && <span className="error"> {error}</span>}
   </div>
 );
 
@@ -100,6 +100,9 @@ const FileInput = ({
 
 // Form component
 class VolunteerForm extends Component {
+
+  
+
   constructor(props) {
     super(props)
 
@@ -132,38 +135,48 @@ class VolunteerForm extends Component {
     
     // add blank first option, acts as placeholder text for select field component
     optionsList.unshift(
-      <option key='title' value='' selected>Volunteer Activity</option>
+      <option key='title' value='' selected>Choose A Volunteer Activity</option>
     );
     return optionsList;
   }
 
+
+
   render() {
   const { handleSubmit } = this.props;
     return (
+    <div>
+    <h1> Record Your Volunteering Activities!</h1>
       <form onSubmit={handleSubmit(this.handleFormSubmit)}>
         {/* form body */}
         <div>
-          <Field placeholder='Volunteer Activity' name='name' component={renderSelectField} required>
+          <Field placeholder='Volunteer Activity' name='activity' component={renderSelectField} required>
             {this.renderOptions()}
           </Field>
 
         </div>
         <div>
+        <br/>
+        How many hours did you volunteer today?
           {/* TODO: Prevent user from entering negative numbers */}
-          <Field placeholder='Number of Hours' name='hours' component={renderField} type='number' />
+          <Field placeholder='Number of Hours' name='hours' type='number' component={renderField}  />
         </div>
         <div>
+        <br/>
+        Tell us about your experience!
           <Field placeholder='Short Description' name='description' textarea={true} component={renderField} />
         </div>
-        
+        <br/>
         {/* File upload field: sends file object to action creator */}
         {/* TODO: add validation for attached file */}
         <Field
           component={FileInput}
           name="mediaUrl"
         />
+         
         <button type='submit'>Record Your Volunteering</button>
       </form>
+            </div>
     );
   }
 }

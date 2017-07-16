@@ -38,7 +38,12 @@ const config = {
     new HtmlWebpackPlugin({
       template: 'index.html'
     })
-  ]
+  ],
+  devServer: {
+    historyApiFallback: true,
+    contentBase: './',
+    hot:true
+  }
 }
 
 // For Production
