@@ -7,6 +7,7 @@
   "scripts": {
     "test": "mocha -w --require ./test/helpers/browser.js ./test/**/*.spec.js --recursive",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --history-api-fallback --hot --inline",
+    "build-dev": "webpack",
     "build-production": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors"
   },
   "author": "",
