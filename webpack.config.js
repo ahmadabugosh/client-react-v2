@@ -1,31 +1,57 @@
-var webpack = require('webpack');
-module.exports = {
-  entry: [
-    './src/index.js'
-  ],
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
+
+const config = {
+  entry: './src/index.js',
   output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    path: path.join(__dirname, '/dist')
   },
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['react', 'es2015', 'stage-1']
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          { loader: 'babel-loader' },
+          // { loader: 'eslint-loader' }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract('css-loader')
       }
-    }]
+      /* for images
+      {
+        test: /\.(jpg|gif|png)$/,
+        use: 'file-loader?name=[name].[ext]',
+        include: path.join(__dirname, '/client/assets')
+      }
+      */
+    ]
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
-  },plugins:[
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+  devtool: 'eval-source-map',
+  plugins: [
+    new ExtractTextPlugin('styles.css'),
+    new HtmlWebpackPlugin({
+      template: 'index.html'
     })
   ]
-};
+}
+
+// For Production
+
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin()
+  );
+}
+
+module.exports = config;
