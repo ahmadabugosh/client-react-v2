@@ -42,7 +42,7 @@ ReactDOM.render(
         <Route path="/feature" component={RequireAuth(Feature)} />
         <Route path="/signout" component={Signout} />
         <Route path="/signup" component={Signup} />
-        <Route path="/volunteer" component={VolunteerForm} />
+        <Route path="/volunteer" component={RequireAuth(VolunteerForm)} />
         <Route path='/my-impact' component={UserProfile} />
         <Route path='/volunteering-success' component={VolunteerRecord} />
       </div>
