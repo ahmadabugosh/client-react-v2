@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import {Router, Route, IndexRoute,browserHistory} from 'react-router';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import Signin from './components/auth/signin';
 import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
@@ -33,20 +34,18 @@ if(token)
 
 ReactDOM.render(
   <Provider store={store}>
-  <Router history= {browserHistory}>
-  <Route path="/" component={App}>
-  <IndexRoute component={Welcome}/ >
-  <Route path="signin" component ={Signin} />
-  <Route path="feature" component ={RequireAuth(Feature)} />
-   <Route path="signout" component ={Signout} />
-   <Route path="signup" component ={Signup} />
-	<Route path="volunteer" component={RequireAuth(VolunteerForm)} />
-  <Route path='my-impact' component={UserProfile} />
-    <Route path='volunteering-success' component={VolunteerRecord} />
-  </Route>
-
-  
-  </Router>
-
+    <Router>
+      <div>
+        <Route path="/" component={App} />
+        <Route exact path='/' component={Welcome} />
+        <Route path="/signin" component={Signin} />
+        <Route path="/feature" component={RequireAuth(Feature)} />
+        <Route path="/signout" component={Signout} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/volunteer" component={RequireAuth(VolunteerForm)} />
+        <Route path='/my-impact' component={UserProfile} />
+        <Route path='/volunteering-success' component={VolunteerRecord} />
+      </div>
+    </Router>
   </Provider>
   , document.querySelector('.container'));
