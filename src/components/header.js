@@ -57,3 +57,6 @@ function mapStateToProps(state)
 }
 
 export default connect(mapStateToProps)(Header);
+
+// export plain unconnected component for testing
+export { Header };
