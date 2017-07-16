@@ -12,9 +12,9 @@ class Header extends Component  {
 
 return[
 
-<li className="nav-item"><Link to="/volunteer" className="nav-link" key={1}>Volunteer</Link> </li>,
-<li className="nav-item"><Link to="/my-impact" className="nav-link" key={2}>My Impact</Link> </li>,
-<li className="nav-item"> <Link to="/signout" className="nav-link" key={3}> Sign Out </Link> </li>];
+	<li className="nav-item" key={1}><Link to="/volunteer" className="nav-link">Volunteer</Link> </li>,
+	<li className="nav-item" key={2}><Link to="/my-impact" className="nav-link">My Impact</Link> </li>,
+	<li className="nav-item" key={3}><Link to="/signout" className="nav-link"> Sign Out </Link> </li>];
 		} else {
 			return [
 				<li className="nav-item" key={1}><Link to="/signin" className="nav-link">Sign in</Link></li>,
