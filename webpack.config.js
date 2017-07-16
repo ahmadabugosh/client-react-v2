@@ -32,6 +32,12 @@ const config = {
       */
     ]
   },
+  externals: {
+    cheerio: 'window',
+    'react/addons': 'react',
+    'react/lib/ExecutionEnvironment': 'react',
+    'react/lib/ReactContext': 'react',
+  },
   devtool: 'eval-source-map',
   plugins: [
     new ExtractTextPlugin('styles.css'),

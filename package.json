@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
-    "test": "mocha -w --require ./test/helpers/browser.js ./test/**/*.spec.js --recursive",
+    "test": "mocha -w --require ./test/helpers/browser.js ./test/**/*.spec.js --require ignore-styles",
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --history-api-fallback --hot --inline",
     "build-dev": "webpack",
     "build-production": "webpack -p --define process.env.NODE_ENV='\"production\"' --progress --colors"
@@ -34,6 +34,7 @@
     "jsdom": "^11.1.0",
     "mocha": "^3.4.2",
     "react-addons-test-utils": "^15.6.0",
+    "react-test-renderer": "^15.6.1",
     "sinon": "^2.3.8",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1"
