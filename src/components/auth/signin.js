@@ -72,6 +72,6 @@ function mapStateToProps(state) {
 let connectedSignin = connect(mapStateToProps, actions)(Signin);
 connectedSignin = reduxForm({
   form: 'signin'
-})(Signin);
+})(connectedSignin);
 
 export default connectedSignin;
