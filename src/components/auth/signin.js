@@ -13,7 +13,7 @@ const renderInput = field => {
   );
 }
 
-class Signin extends Component {
+export class Signin extends Component {
 	constructor(props) {
     super(props);
   }
@@ -42,7 +42,6 @@ class Signin extends Component {
   }
 
   render(){
-    console.log(this.props.isLoading);
     const { handleSubmit } = this.props;
 
     return (
@@ -70,9 +69,9 @@ function mapStateToProps(state) {
   return { isLoading: state.isLoading, form: state.form, errorMessage:state.auth.error };
 }
 
-Signin = connect(mapStateToProps, actions)(Signin);
-Signin = reduxForm({
+let connectedSignin = connect(mapStateToProps, actions)(Signin);
+connectedSignin = reduxForm({
   form: 'signin'
 })(Signin);
 
-export default Signin;
+export default connectedSignin;
