@@ -107,9 +107,9 @@ headers:{authorization:localStorage.getItem('token')}
 
 // action creator to handle post action to /activity route
 // adds volunteer instance to redux store?
-export function recordVolunteerActivity({ activity,	description, hours,	mediaUrl }) {
+export function recordVolunteerActivity({ activity,	description, hours,	mediaUrl },history) {
 	return function(dispatch) {
-		console.log(hours, activity, description,mediaUrl);
+		
 		
 		// TODO: figure out how to handle the mediaUrl file object and how to submit that to the server
 
@@ -125,7 +125,8 @@ headers:{authorization:localStorage.getItem('token')}
 	})
 			.then(response => {
 				if (response.data.success) {
-				browserHistory.push('/volunteering-success');
+					console.log(hours, activity, description,mediaUrl);
+				history.push('/volunteering-success');
 					/**
 					 * dispatch action to display message to user?
 					 * inform user that activity has been successfully recorded

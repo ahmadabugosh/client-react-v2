@@ -122,7 +122,7 @@ class VolunteerForm extends Component {
   }
 
   handleFormSubmit(fields) {
-    this.props.recordVolunteerActivity({...fields})
+    this.props.recordVolunteerActivity({...fields},this.props.history)
   }
 
   renderOptions() {
