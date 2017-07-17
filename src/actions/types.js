@@ -3,3 +3,5 @@ export const UNAUTH_USER='unauth_user';
 export const AUTH_ERROR='auth_error';
 export const FETCH_MESSAGE="fetch_message";
 
+export const BEGIN_LOADING='begin_loading';
+export const END_LOADING='end_loading';
