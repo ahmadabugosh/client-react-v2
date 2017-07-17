@@ -1,15 +1,16 @@
 import axios from 'axios';
 
 const ROOT_URL='https://i7san-api.herokuapp.com';
-import {AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE} from './types';
+import {AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE, BEGIN_LOADING, END_LOADING} from './types';
 
 export function signinUser ({email, password}, history) 
 {
-
 	return function (dispatch) {
+		dispatch(authError(''));
 //submit email/password to server
 axios.post(`${ROOT_URL}/signin`,{email, password})
 .then(response => {
+	dispatch(endLoading())
 localStorage.setItem('token', response.data.token);
 dispatch({type: AUTH_USER});
 history.push('/feature');
@@ -138,4 +139,14 @@ headers:{authorization:localStorage.getItem('token')}
 			});
 	}
 
+}
+
+
+// action creators to handle state of whether data is currently loading
+export function beginLoading() {
+	return { type: BEGIN_LOADING }
+}
+
+export function endLoading() {
+	return { type: END_LOADING }
 }
