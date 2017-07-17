@@ -10,6 +10,7 @@ export function signinUser ({email, password}, history)
 //submit email/password to server
 axios.post(`${ROOT_URL}/signin`,{email, password})
 .then(response => {
+	dispatch(endLoading())
 localStorage.setItem('token', response.data.token);
 dispatch({type: AUTH_USER});
 history.push('/feature');

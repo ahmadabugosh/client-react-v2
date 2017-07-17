@@ -6,7 +6,7 @@ import {
 
 export default function (state = false, action) {
 
-  switch (action.type) {
+  switch (action.type) {  
     case BEGIN_LOADING:
       return true;
 
