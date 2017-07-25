@@ -10,113 +10,112 @@ describe('<Header />', () => {
     const wrapper = mount(
       <MemoryRouter>
         <Header />
-      </MemoryRouter>,
+      </MemoryRouter>
     );
     expect(wrapper.exists()).to.be.true;
   });
 
   describe('When not authenticated', () => {
     it('renders signin link', () => {
-      const route = '/signin'
+      const route = '/signin';
       const wrapper = mount(
         <MemoryRouter>
-          <Header authenticated={false}  />
-        </MemoryRouter>,
+          <Header authenticated={false} />
+        </MemoryRouter>
       );
       expect(wrapper.find(`a[href="${route}"]`)).to.have.lengthOf(1);
     });
 
     it('renders signup link', () => {
-      const route = '/signup'
+      const route = '/signup';
       const wrapper = mount(
         <MemoryRouter>
           <Header authenticated={false} />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
       expect(wrapper.find(`a[href="${route}"]`)).to.have.lengthOf(1);
     });
 
     it('should not render volunteer link', () => {
-      const route = '/volunteer'
+      const route = '/volunteer';
       const wrapper = mount(
         <MemoryRouter>
           <Header authenticated={false} />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
       expect(wrapper.find(`a[href="${route}"]`)).to.have.lengthOf(0);
     });
 
     it('should not render my impact link', () => {
-      const route = '/my-impact'
+      const route = '/my-impact';
       const wrapper = mount(
         <MemoryRouter>
           <Header authenticated={false} />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
       expect(wrapper.find(`a[href="${route}"]`)).to.have.lengthOf(0);
     });
 
     it('should not render signout link', () => {
-      const route = '/signout'
+      const route = '/signout';
       const wrapper = mount(
         <MemoryRouter>
           <Header authenticated={false} />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
       expect(wrapper.find(`a[href="${route}"]`)).to.have.lengthOf(0);
     });
   });
 
-  describe('When authenticated', ()=> {
+  describe('When authenticated', () => {
     it('renders volunteer link', () => {
-      const route = '/volunteer'
+      const route = '/volunteer';
       const wrapper = mount(
         <MemoryRouter>
           <Header authenticated={true} />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
       expect(wrapper.find(`a[href="${route}"]`)).to.have.lengthOf(1);
     });
 
     it('renders my impact link', () => {
-      const route = '/my-impact'
+      const route = '/my-impact';
       const wrapper = mount(
         <MemoryRouter>
           <Header authenticated={true} />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
       expect(wrapper.find(`a[href="${route}"]`)).to.have.lengthOf(1);
     });
 
     it('renders signout link', () => {
-      const route = '/signout'
+      const route = '/signout';
       const wrapper = mount(
         <MemoryRouter>
           <Header authenticated={true} />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
       expect(wrapper.find(`a[href="${route}"]`)).to.have.lengthOf(1);
     });
 
     it('should not render signin link', () => {
-      const route = '/signin'
+      const route = '/signin';
       const wrapper = mount(
         <MemoryRouter>
           <Header authenticated={true} />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
       expect(wrapper.find(`a[href="${route}"]`)).to.have.lengthOf(0);
     });
 
     it('should not render signup link', () => {
-      const route = '/signup'
+      const route = '/signup';
       const wrapper = mount(
         <MemoryRouter>
           <Header authenticated={true} />
-        </MemoryRouter>,
+        </MemoryRouter>
       );
       expect(wrapper.find(`a[href="${route}"]`)).to.have.lengthOf(0);
     });
   });
 });
-

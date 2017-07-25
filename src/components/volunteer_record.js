@@ -1,13 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import * as actions from '../actions';
 import AlertContainer from 'react-alert';
 
-
-
-
-class VolunteerRecord extends Component{
-constructor(props){
+class VolunteerRecord extends Component {
+  constructor(props) {
     super(props);
     this.alertOptions = {
       offset: 14,
@@ -18,14 +15,11 @@ constructor(props){
     };
   }
 
-	componentDidMount(){
+  componentDidMount() {
+    this.showAlert();
+  }
 
-this.showAlert();
-
-	}
- 
- 
-  showAlert(){
+  showAlert() {
     this.msg.show('Volunteering Recorded!', {
       time: 4000,
       type: 'success',
@@ -33,24 +27,22 @@ this.showAlert();
     });
   }
 
- //  <button onClick={this.showAlert.bind(this)}>Show Alert</button>
+  //  <button onClick={this.showAlert.bind(this)}>Show Alert</button>
 
-render(){
-	return(
-
-		<div>
-	<h3> Thanks for recording your volunteering activity! </h3>
-  <h3> <a href="./volunteer"> Volunteer More!</a></h3>
-  <h3> Or <a href="./userprofile"> View Your Impact!</a></h3>
-<AlertContainer ref={a => this.msg = a} {...this.alertOptions} />
-      
-		</div>
-		);
-
-
+  render() {
+    return (
+      <div>
+        <h3> Thanks for recording your volunteering activity! </h3>
+        <h3>
+          {' '}<a href="./volunteer"> Volunteer More!</a>
+        </h3>
+        <h3>
+          {' '}Or <a href="./userprofile"> View Your Impact!</a>
+        </h3>
+        <AlertContainer ref={a => (this.msg = a)} {...this.alertOptions} />
+      </div>
+    );
+  }
 }
-
-}
-
 
 export default VolunteerRecord;
