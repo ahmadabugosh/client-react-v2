@@ -40,6 +40,9 @@ const validate = values => {
   if (!values.hours) {
     errors.hours = 'Please the number of hours you volunteered';
   }
+  if (values.hours <= 0) {
+    errors.hours = 'You must enter an amount of hours greater than 0';
+  }
   if (!values.description) {
     errors.description = 'Please enter a short description of your volunteering activity';
   }
@@ -137,7 +140,6 @@ class VolunteerForm extends Component {
           <div>
             <br />
             How many hours did you volunteer today?
-            {/* TODO: Prevent user from entering negative numbers */}
             <Field placeholder="Number of Hours" name="hours" type="number" component={renderField} />
           </div>
           <div>
