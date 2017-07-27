@@ -76,9 +76,32 @@ export function fetchMessage() {
 
 // action creator to handle post action to /activity route
 // adds volunteer instance to redux store?
-export function recordVolunteerActivity({ activity, description, hours, mediaUrl }, history) {
+export function recordVolunteerActivity({ activity, description, hours, file }, history) {
   return function(dispatch) {
-    // TODO: figure out how to handle the mediaUrl file object and how to submit that to the server
+    // ///////// upload image to S3 ////////////////
+    axios
+      .get(`${ROOT_URL}/get-signed-url`, {
+        params: {
+          filename: file.name,
+          filetype: file.type
+        }
+      })
+      .then(function(result) {
+        var signedUrl = result.data;
+        var options = {
+          headers: {
+            'Content-Type': file.type
+          }
+        };
+
+        return axios.put(signedUrl, file, options);
+      })
+      .then(function(result) {
+        console.log(result);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
 
     // submit fields to the server
     axios
@@ -88,7 +111,7 @@ export function recordVolunteerActivity({ activity, description, hours, mediaUrl
           activity,
           hours,
           description,
-          mediaUrl
+          file
         },
         {
           headers: { authorization: localStorage.getItem('token') }
@@ -96,7 +119,7 @@ export function recordVolunteerActivity({ activity, description, hours, mediaUrl
       )
       .then(response => {
         if (response.data.success) {
-          console.log(hours, activity, description, mediaUrl);
+          console.log(hours, activity, description, file);
           history.push('/volunteering-success');
           /**
 					 * dispatch action to display message to user?

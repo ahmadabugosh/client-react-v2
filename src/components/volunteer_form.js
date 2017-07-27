@@ -150,7 +150,7 @@ class VolunteerForm extends Component {
           <br />
           {/* File upload field: sends file object to action creator */}
           {/* TODO: add validation for attached file */}
-          <Field component={FileInput} name="mediaUrl" />
+          <Field component={FileInput} name="file" />
 
           <button type="submit">Record Your Volunteering</button>
         </form>
