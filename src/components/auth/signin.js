@@ -11,10 +11,10 @@ const renderInput = field => {
       <input {...input} type={type} className="form-control" />
     </div>
   );
-}
+};
 
 export class Signin extends Component {
-	constructor(props) {
+  constructor(props) {
     super(props);
   }
 
@@ -22,7 +22,7 @@ export class Signin extends Component {
     // check if there is an errorMessage displayed to the user,
     // if so, changes isloading(in redux store) to false
     if (props.errorMessage) {
-        this.props.endLoading();
+      this.props.endLoading();
     }
   }
 
@@ -32,7 +32,7 @@ export class Signin extends Component {
   }
 
   renderAlert() {
-    if(this.props.errorMessage) {
+    if (this.props.errorMessage) {
       return (
         <div className="alert alert-danger">
           <strong>Oops!</strong> {this.props.errorMessage}
@@ -41,32 +41,31 @@ export class Signin extends Component {
     }
   }
 
-  render(){
+  render() {
     const { handleSubmit } = this.props;
 
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-
         <div className="form-group">
           <label>Email:</label>
-          <Field name="email" 
-              type="email" component={renderInput} />
+          <Field name="email" type="email" component={renderInput} />
         </div>
         <div className="form-group">
           <label>Password:</label>
-          <Field name="password" 
-              type="password" component={renderInput} />
+          <Field name="password" type="password" component={renderInput} />
         </div>
         {this.renderAlert()}
         <RingLoader color={'#123abc'} loading={this.props.isLoading} />
-        <button action="submit" className="btn btn-primary">Sign in</button>
+        <button action="submit" className="btn btn-primary">
+          Sign in
+        </button>
       </form>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { isLoading: state.isLoading, form: state.form, errorMessage:state.auth.error };
+  return { isLoading: state.isLoading, form: state.form, errorMessage: state.auth.error };
 }
 
 let connectedSignin = connect(mapStateToProps, actions)(Signin);
