@@ -106,7 +106,9 @@ class VolunteerForm extends Component {
   }
 
   handleFormSubmit(fields) {
-    this.props.recordVolunteerActivity({ ...fields }, this.props.history);
+    const totalPoints =
+      this.state.activities.find(activity => activity.shortUrl === fields.activity).points * fields.hours;
+    this.props.recordVolunteerActivity({ ...fields }, totalPoints, this.props.history);
   }
 
   renderOptions() {

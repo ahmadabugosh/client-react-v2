@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
+
 import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE, BEGIN_LOADING, END_LOADING } from './types';
 
 export function signinUser({ email, password }, history) {
@@ -76,65 +77,73 @@ export function fetchMessage() {
 
 // action creator to handle post action to /activity route
 // adds volunteer instance to redux store?
-export function recordVolunteerActivity({ activity, description, hours, file }, history) {
-  return function(dispatch) {
-    // ///////// upload image to S3 ////////////////
-    axios
-      .get(`${ROOT_URL}/get-signed-url`, {
-        params: {
-          filename: file.name,
-          filetype: file.type
-        }
-      })
-      .then(function(result) {
-        var signedUrl = result.data;
-        var options = {
-          headers: {
-            'Content-Type': file.type
+export function recordVolunteerActivity({ activity, description, hours, file }, points, history) {
+  return dispatch => {
+    /////////// upload image to S3 ////////////////
+    let signedUrlRequest;
+    if (file) {
+      signedUrlRequest = new Promise((resolve, reject) => {
+        axios
+          .get(`${ROOT_URL}/get-signed-url`, {
+            params: {
+              filename: file.name,
+              filetype: file.type
+            }
+          })
+          .then(result => {
+            var signedUrl = result.data;
+            var options = {
+              headers: {
+                'Content-Type': file.type
+              }
+            };
+            axios.put(signedUrl, file, options).then(() => {
+              const mediaUrl = signedUrl.match(/[^?]*/)[0];
+              resolve(mediaUrl);
+            });
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      });
+    } else {
+      signedUrlRequest = Promise.resolve('no image uploaded');
+    }
+
+    /////////// upload record to database ////////////////
+    signedUrlRequest.then(mediaUrl => {
+      axios
+        .post(
+          `${ROOT_URL}/volunteering`,
+          {
+            activity,
+            hours,
+            description,
+            points,
+            mediaUrl
+          },
+          {
+            headers: { authorization: localStorage.getItem('token') }
           }
-        };
-
-        return axios.put(signedUrl, file, options);
-      })
-      .then(function(result) {
-        console.log(result);
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
-
-    // submit fields to the server
-    axios
-      .post(
-        `${ROOT_URL}/volunteering`,
-        {
-          activity,
-          hours,
-          description,
-          file
-        },
-        {
-          headers: { authorization: localStorage.getItem('token') }
-        }
-      )
-      .then(response => {
-        if (response.data.success) {
-          console.log(hours, activity, description, file);
-          history.push('/volunteering-success');
-          /**
-					 * dispatch action to display message to user?
-					 * inform user that activity has been successfully recorded
-					 * clear or hide form, display button that allows the user enter another activity
-					 */
-        }
-      })
-      .catch(() => {
-        dispatch(
-          authError(
-            "Ooops looks like we can't record your volunteering activity. Try re-entering your fields and try again!"
-          )
-        );
-      });
+        )
+        .then(response => {
+          if (response.data.success) {
+            history.push('/volunteering-success');
+            /**
+             * dispatch action to display message to user?
+             * inform user that activity has been successfully recorded
+             * clear or hide form, display button that allows the user enter another activity
+             */
+          }
+        })
+        .catch(() => {
+          dispatch(
+            authError(
+              "Ooops looks like we can't record your volunteering activity. Try re-entering your fields and try again!"
+            )
+          );
+        });
+    });
   };
 }
 
