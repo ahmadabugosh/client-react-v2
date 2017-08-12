@@ -9,6 +9,8 @@ import Impact from './impact';
 class UserProfilePublic extends Component {
   constructor(props) {
     super(props);
+
+    this.handleFollowUser = this.handleFollowUser.bind(this);
   }
   componentDidMount() {
     if (!this._findUserByName()) {
@@ -16,6 +18,10 @@ class UserProfilePublic extends Component {
     }
   }
 
+  handleFollowUser(username) {
+    // TODO: action creator for following current user
+    console.log(`following ${this.props.match.params.user}`);
+  }
   _findUserByName() {
     return Object.values(this.props.users).find(
       user => user.name.toLowerCase() === this.props.match.params.user.toLowerCase()
@@ -30,6 +36,9 @@ class UserProfilePublic extends Component {
         {user
           ? <div>
               Hello {user.name}
+              <button onClick={this.handleFollowUser} className="btn btn-primary">
+                Follow {user.name}
+              </button>
             </div>
           : <div>loading</div>}
         {/* <Impact user={this.props.match.params.user} /> */}
