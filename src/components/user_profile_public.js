@@ -38,7 +38,7 @@ class UserProfilePublic extends Component {
           : <div>
               <div>
                 <h3>
-                  {user.name}'s Stats
+                  {user.name}&#8217;s Stats
                 </h3>
                 <button onClick={this.handleFollowUser} className="btn btn-primary">
                   Follow {user.name}

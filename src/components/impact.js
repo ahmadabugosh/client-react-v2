@@ -21,7 +21,7 @@ const Impact = props => {
     // TODO: remove inline styles
     <div style={{ textAlign: 'left', minWidth: 800 }}>
       <h4>
-        {name}'s Impact
+        {name}&#8217;s Impact
       </h4>
       <div>
         <img src={loremIpsumImageUrl} />
@@ -35,7 +35,7 @@ const Impact = props => {
         </div>
         <div style={tempDivStyle}>
           {/* Render Dynamically */}
-          That's enough time to watch 900 movies!
+          That&#8217;s enough time to watch 900 movies!
         </div>
       </div>
       <div>
@@ -50,7 +50,7 @@ const Impact = props => {
         </div>
         <div style={tempDivStyle}>
           {/* Render Dynamically */}
-          That's enough people to make 10 football teams!
+          That&#8217;s enough people to make 10 football teams!
         </div>
       </div>
       <div>
@@ -65,7 +65,7 @@ const Impact = props => {
         </div>
         <div style={tempDivStyle}>
           {/* Render Dynamically */}
-          That's enough to buy a Mercedes!
+          That&#8217;s enough to buy a Mercedes!
         </div>
       </div>
     </div>
