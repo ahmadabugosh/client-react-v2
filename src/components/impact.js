@@ -2,6 +2,7 @@ import React from 'react';
 
 // TODO: Complete Impact component
 const Impact = props => {
+  console.log(props);
   const { name, volunteering, friends, workImpact } = props.user;
 
   // TEMP ***************
@@ -19,7 +20,9 @@ const Impact = props => {
   return (
     // TODO: remove inline styles
     <div style={{ textAlign: 'left', minWidth: 800 }}>
-      <h4>Your Impact</h4>
+      <h4>
+        {name}'s Impact
+      </h4>
       <div>
         <img src={loremIpsumImageUrl} />
         <div style={tempDivStyle}>

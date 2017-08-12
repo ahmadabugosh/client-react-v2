@@ -33,15 +33,39 @@ class UserProfilePublic extends Component {
     console.log(user);
     return (
       <div>
-        {user
-          ? <div>
-              Hello {user.name}
-              <button onClick={this.handleFollowUser} className="btn btn-primary">
-                Follow {user.name}
-              </button>
-            </div>
-          : <div>loading</div>}
-        {/* <Impact user={this.props.match.params.user} /> */}
+        {!user
+          ? <div>loading</div>
+          : <div>
+              <div>
+                <h3>
+                  {user.name}'s Stats
+                </h3>
+                <button onClick={this.handleFollowUser} className="btn btn-primary">
+                  Follow {user.name}
+                </button>
+                {user.joinDate &&
+                  <h4>
+                    Join date: {user.joinDate}
+                  </h4>}
+                {user.country &&
+                  <h4>
+                    Country: {user.country}
+                  </h4>}
+                {user.badges &&
+                  <h4>
+                    Badges: {user.badges}
+                  </h4>}
+                {user.organizations &&
+                  <h4>
+                    Organizations: {user.organizations}
+                  </h4>}
+                {user.activities &&
+                  <h4>
+                    Activities: {user.activities}
+                  </h4>}
+              </div>
+              <Impact user={user} />
+            </div>}
       </div>
     );
   }

@@ -169,12 +169,17 @@ export function fetchUserInfo(user) {
   return dispatch => {
     setTimeout(() => {
       dispatch({
+        // TODO: replace with axios call
         type: FETCH_USER_INFO,
         // data will be returned as response.data
         payload: {
           // id will be mongo object ID
           id: 'a1230f44',
           name: 'Jay',
+          joinDate: 'March 4, 2017',
+          country: 'USA',
+          organizations: [],
+          badges: [],
           volunteering: {
             hours: 2000,
             rank: 129
