@@ -2,7 +2,15 @@ import axios from 'axios';
 
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
-import { AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE, BEGIN_LOADING, END_LOADING } from './types';
+import {
+  AUTH_USER,
+  AUTH_ERROR,
+  UNAUTH_USER,
+  FETCH_MESSAGE,
+  BEGIN_LOADING,
+  END_LOADING,
+  FETCH_USER_INFO
+} from './types';
 
 export function signinUser({ email, password }, history) {
   return function(dispatch) {
@@ -154,4 +162,35 @@ export function beginLoading() {
 
 export function endLoading() {
   return { type: END_LOADING };
+}
+
+// Mocked API call
+export function fetchUserInfo(user) {
+  console.log(user);
+  return dispatch => {
+    setTimeout(() => {
+      console.log(dispatch);
+      dispatch({
+        type: FETCH_USER_INFO,
+        // data will be returned as response.data
+        payload: {
+          // id will be mongo object ID
+          id: 'a1230f44',
+          name: 'Jay',
+          volunteering: {
+            hours: 2000,
+            rank: 129
+          },
+          friends: {
+            amount: 102,
+            rank: 26
+          },
+          workImpact: {
+            amount: 125000,
+            currency: 'AED'
+          }
+        }
+      });
+    }, 3000);
+  };
 }
