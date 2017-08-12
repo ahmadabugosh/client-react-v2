@@ -166,10 +166,8 @@ export function endLoading() {
 
 // Mocked API call
 export function fetchUserInfo(user) {
-  console.log(user);
   return dispatch => {
     setTimeout(() => {
-      console.log(dispatch);
       dispatch({
         type: FETCH_USER_INFO,
         // data will be returned as response.data
