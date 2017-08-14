@@ -2,6 +2,7 @@ import React from 'react';
 
 // TODO: Complete Impact component
 const Impact = props => {
+  console.log(props);
   const { name, volunteering, friends, workImpact } = props.user;
 
   // TEMP ***************
@@ -19,7 +20,9 @@ const Impact = props => {
   return (
     // TODO: remove inline styles
     <div style={{ textAlign: 'left', minWidth: 800 }}>
-      <h4>Your Impact</h4>
+      <h4>
+        {name}&#8217;s Impact
+      </h4>
       <div>
         <img src={loremIpsumImageUrl} />
         <div style={tempDivStyle}>
@@ -32,7 +35,7 @@ const Impact = props => {
         </div>
         <div style={tempDivStyle}>
           {/* Render Dynamically */}
-          That's enough time to watch 900 movies!
+          That&#8217;s enough time to watch 900 movies!
         </div>
       </div>
       <div>
@@ -47,7 +50,7 @@ const Impact = props => {
         </div>
         <div style={tempDivStyle}>
           {/* Render Dynamically */}
-          That's enough people to make 10 football teams!
+          That&#8217;s enough people to make 10 football teams!
         </div>
       </div>
       <div>
@@ -62,7 +65,7 @@ const Impact = props => {
         </div>
         <div style={tempDivStyle}>
           {/* Render Dynamically */}
-          That's enough to buy a Mercedes!
+          That&#8217;s enough to buy a Mercedes!
         </div>
       </div>
     </div>

@@ -7,7 +7,8 @@ const config = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, '/dist')
+    path: path.join(__dirname, '/dist'),
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -15,7 +16,7 @@ const config = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: [
-          { loader: 'babel-loader' },
+          { loader: 'babel-loader' }
           // { loader: 'eslint-loader' }
         ]
       },
@@ -36,7 +37,7 @@ const config = {
     cheerio: 'window',
     'react/addons': 'react',
     'react/lib/ExecutionEnvironment': 'react',
-    'react/lib/ReactContext': 'react',
+    'react/lib/ReactContext': 'react'
   },
   devtool: 'eval-source-map',
   plugins: [
@@ -47,10 +48,10 @@ const config = {
   ],
   devServer: {
     historyApiFallback: true,
-    contentBase: './',
-    hot:true
+    contentBase: '/',
+    hot: true
   }
-}
+};
 
 // For Production
 
@@ -58,7 +59,7 @@ if (process.env.NODE_ENV === 'production') {
   config.plugins.push(
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
     new webpack.optimize.UglifyJsPlugin()
