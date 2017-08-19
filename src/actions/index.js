@@ -157,6 +157,7 @@ export function recordVolunteerActivity({ activity, description, hours, file }, 
 
 // action creators to handle state of whether data is currently loading
 export function beginLoading() {
+  console.log('begin loading');
   return { type: BEGIN_LOADING };
 }
 
@@ -167,7 +168,9 @@ export function endLoading() {
 // Mocked API call
 export function fetchUserInfo(user) {
   return dispatch => {
+    dispatch(beginLoading());
     setTimeout(() => {
+      dispatch(endLoading());
       dispatch({
         // TODO: replace with axios call
         type: FETCH_USER_INFO,
@@ -176,6 +179,7 @@ export function fetchUserInfo(user) {
           // id will be mongo object ID
           id: 'a1230f44',
           name: 'Jay',
+          username: 'jayu',
           joinDate: 'March 4, 2017',
           country: 'USA',
           organizations: [],
