@@ -9,6 +9,7 @@ import Signout from './components/auth/signout';
 import Signup from './components/auth/signup';
 import UserProfile from './components/user_profile';
 import UserProfilePublic from './components/user_profile_public';
+import Impact from './components/impact';
 import App from './components/app';
 import VolunteerForm from './components/volunteer_form';
 import reduxThunk from 'redux-thunk';
@@ -46,7 +47,7 @@ ReactDOM.render(
         <Route path="/signout" component={Signout} />
         <Route path="/signup" component={Signup} />
         <Route path="/volunteer" component={RequireAuth(VolunteerForm)} />
-        <Route path="/my-impact" component={UserProfile} />
+        <Route path="/my-impact" component={RequireAuth(Impact)} />
         <Route path="/volunteering-success" component={VolunteerRecord} />
         <Route path="/user/:username" component={UserProfilePublic} />
       </div>

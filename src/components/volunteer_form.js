@@ -5,32 +5,6 @@ import * as actions from '../actions';
 import axios from 'axios';
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
-// TEMP
-// Will be populated from the server, set by admins
-// exaxt data structure to be determined
-// const activities = [
-//   {
-//     displayName: "Donate Blood",
-//     value: 'donate_blood',
-//     points: 20
-//   },
-//   {
-//     displayName: "Beach Clean up",
-//     value: 'beach_cleanup',
-//     points: 5
-//   },
-//   {
-//     displayName: 'Elderly Home',
-//     value: 'elderly_home',
-//     points: 25
-//   },
-//   {
-//     displayName: 'Charity Drive',
-//     value: 'charity_drive',
-//     points: 10
-//   }
-// ]
-
 // validation function, tests each field on change
 const validate = values => {
   const errors = {};
