@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
+// const ROOT_URL = 'http://localhost:3333';
 
 import {
   AUTH_USER,
@@ -9,7 +10,9 @@ import {
   FETCH_MESSAGE,
   BEGIN_LOADING,
   END_LOADING,
-  FETCH_USER_INFO
+  FETCH_USER_INFO,
+  STORE_LOGGED_IN_USER,
+  STORE_MY_IMPACT
 } from './types';
 
 export function signinUser({ email, password }, history) {
@@ -19,6 +22,7 @@ export function signinUser({ email, password }, history) {
     axios
       .post(`${ROOT_URL}/signin`, { email, password })
       .then(response => {
+        dispatch(storeLoggedInUser(response.data.loggedInUser));
         dispatch(endLoading());
         localStorage.setItem('token', response.data.token);
         dispatch({ type: AUTH_USER });
@@ -165,35 +169,95 @@ export function endLoading() {
 }
 
 // Mocked API call
-export function fetchUserInfo(user) {
+export function fetchUserInfo(username) {
   return dispatch => {
-    setTimeout(() => {
-      dispatch({
-        // TODO: replace with axios call
-        type: FETCH_USER_INFO,
-        // data will be returned as response.data
-        payload: {
-          // id will be mongo object ID
-          id: 'a1230f44',
-          name: 'Jay',
-          joinDate: 'March 4, 2017',
-          country: 'USA',
-          organizations: [],
-          badges: [],
-          volunteering: {
-            hours: 2000,
-            rank: 129
-          },
-          friends: {
-            amount: 102,
-            rank: 26
-          },
-          workImpact: {
-            amount: 125000,
-            currency: 'AED'
-          }
+    dispatch(beginLoading());
+    axios
+      .post(
+        `${ROOT_URL}/user-info`,
+        {
+          username
+        },
+        {
+          headers: { authorization: localStorage.getItem('token') }
         }
+      )
+      .then(response => {
+        dispatch(endLoading());
+        dispatch({
+          type: FETCH_USER_INFO,
+          // data will be returned as response.data
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        dispatch(endLoading());
+        console.log(err);
       });
-    }, 3000);
+  };
+}
+
+export function fetchMyUserInfo() {
+  return dispatch => {
+    axios
+      .post(`${ROOT_URL}/user-info`, null, {
+        headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(response => {
+        // TODO: display success message to user
+        dispatch(storeLoggedInUser(response.data));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+// TODO: Follow function not working
+export function followUser(username) {
+  return dispatch => {
+    axios
+      .post(
+        `${ROOT_URL}/follow`,
+        {
+          username
+        },
+        {
+          headers: { authorization: localStorage.getItem('token') }
+        }
+      )
+      .then(response => {
+        // TODO: display success message to user
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+export function fetchMyImpact(username) {
+  return dispatch => {
+    axios
+      .request({
+        url: `${ROOT_URL}/my-impact`,
+        method: 'get',
+        headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(response => {
+        dispatch({
+          type: STORE_MY_IMPACT,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+export function storeLoggedInUser(user) {
+  return {
+    type: STORE_LOGGED_IN_USER,
+    payload: user
   };
 }
