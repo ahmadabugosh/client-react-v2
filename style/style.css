@@ -2,3 +2,18 @@
 {
 	color: red;
 }
+
+#slider1 
+{
+	width:100%;
+
+}
+
+
+.container 
+
+{
+	max-width:100%;
+	padding-right: 0;
+	padding-left:0;
+}
