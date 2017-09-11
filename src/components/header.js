@@ -45,7 +45,7 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-light">
         <Link to="/" className="navbar-brand">
-          {' '}i7san{' '}
+          {' '}<img src="https://s3.amazonaws.com/i7san-test/i7san+logo.jpg" width="65" height="65" /><p align="center" id="logo-text">i7san</p>{' '}
         </Link>
         <ul className="nav navbar-nav">
           {this.renderLinks()}

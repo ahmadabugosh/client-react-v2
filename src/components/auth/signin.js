@@ -45,6 +45,9 @@ export class Signin extends Component {
     const { handleSubmit } = this.props;
 
     return (
+    <div className="container-fluid">
+    <div className="row">
+    <div className="col-md-4">
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <div className="form-group">
           <label>Email:</label>
@@ -60,6 +63,9 @@ export class Signin extends Component {
           Sign in
         </button>
       </form>
+      </div>
+      </div>
+      </div>
     );
   }
 }

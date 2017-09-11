@@ -17,3 +17,32 @@
 	padding-right: 0;
 	padding-left:0;
 }
+
+.slide {
+  position: relative;
+}
+
+.slide__caption {
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: auto;
+    color: #000;
+    padding: 25px;
+    max-width: 100%;
+    font-size: 15px;
+    min-height: 20px;
+    min-width: 200px;
+    position: absolute;
+    font-weight: bolder;
+    text-align: center;
+    background-color: #ffffff;
+    text-shadow: 0 0 5px black;
+    margin: 40%;
+    margin-bottom: 45%;
+}
+
+#logo-text{
+
+	text-align:center;
+}
