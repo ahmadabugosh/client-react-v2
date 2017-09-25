@@ -9,6 +9,7 @@ class Header extends Component {
   renderLinks() {
     if (this.props.authenticated) {
       return [
+     
         <li className="nav-item" key={1}>
           <Link to="/volunteer" className="nav-link">
             Volunteer
@@ -24,6 +25,7 @@ class Header extends Component {
             Sign Out
           </Link>
         </li>
+
       ];
     } else {
       return [
@@ -43,14 +45,17 @@ class Header extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-light">
+    	 <nav className="navbar navbar-default navbar-fixed-top">
+  <div className="container">
+
         <Link to="/" className="navbar-brand">
-          {' '}<img src="https://s3.amazonaws.com/i7san-test/i7san+logo.jpg" width="65" height="65" /><p align="center" id="logo-text">i7san</p>{' '}
+          {' '}<img src="https://s3.ap-south-1.amazonaws.com/i7san/i7san+logo.png" width="65" height="65" /><p id="logo-text">i7san</p>{' '}
         </Link>
         <ul className="nav navbar-nav">
           {this.renderLinks()}
         </ul>
-      </nav>
+             </div>
+</nav>
     );
   }
 }

@@ -17,7 +17,10 @@ export class SimpleSlider extends Component {
     return (
       <div>
       <Slider {...this.settings} id="slider1">
-        <div className="slide slide--has-caption slick-slide"><img src="https://s3.amazonaws.com/i7san-test/anes-sabitovic-286668.jpg" width="100%"/> <div className="slide__caption">VOLUNTEER!</div>
+        <div className="slide slide--has-caption slick-slide"><a href="/volunteer"><img src="https://s3.ap-south-1.amazonaws.com/i7san/i7san-slider.png" width="100%" /></a> <div className="slide__caption">
+
+
+        </div>
 </div>
       </Slider>
       </div>
