@@ -1,3 +1,6 @@
+
+body { padding-top: 110px; }
+
 .error
 {
 	color: red;
@@ -7,6 +10,7 @@
 {
 	width:100%;
 	max-height: 300px;
+	margin-top:50px;
 
 }
 
@@ -48,14 +52,20 @@
 	text-align:center;
 	margin: auto 0px;
 	display: block;
-	color:white;
+	color:#333;
 }
 
 .navbar-nav .nav-link
 {
 
-	color:white;
+	color:#333;
 	font-size:30px;
+	margin-top:20px;
+}
+
+.navbar-fixed-top {
+    top: 0;
+    background: rgba(255, 255, 255, 0.9);
 }
 
 .container-fluid {

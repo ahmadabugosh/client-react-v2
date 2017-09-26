@@ -45,7 +45,8 @@ class Header extends Component {
 
   render() {
     return (
-    	 <nav className="navbar navbar-default navbar-fixed-top">
+   
+    	 <nav className="navbar navbar-inverse navbar-fixed-top">
   <div className="container">
 
         <Link to="/" className="navbar-brand">
@@ -56,6 +57,7 @@ class Header extends Component {
         </ul>
              </div>
 </nav>
+
     );
   }
 }
