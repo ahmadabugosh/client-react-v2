@@ -78,11 +78,32 @@ h2 {
 	font-size:40px;
 	color:#333333;
 }
-#sliderText{
+.headerText{
 			text-align: center;
 			margin: auto;
 			display: block;
+
 }
+
+#heading1
+{
+
+padding:30px;
+}
+#heading1
+{
+
+padding:15px;
+}
+
+.ui.fluid.button {
+    display: block;
+    color: #333;
+    background-color:#B2D500;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
 
 
 
