@@ -13,7 +13,7 @@ export default function(ComposedComponent) {
 
     componentWillMount() {
       if (!this.props.authenticated) {
-        this.props.history.push('/');
+        this.props.history.push('/signin');
       }
     }
 

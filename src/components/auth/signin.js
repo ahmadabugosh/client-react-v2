@@ -45,9 +45,14 @@ export class Signin extends Component {
     const { handleSubmit } = this.props;
 
     return (
+    <div>
+    <h1> Sign In To i7san</h1>
     <div className="container-fluid">
+
     <div className="row">
-    <div className="col-md-4">
+
+    <div className="col-md-12" id="center">
+    <h3>Start Tracking Your Volunteering!</h3>
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <div className="form-group">
           <label>Email:</label>
@@ -63,8 +68,27 @@ export class Signin extends Component {
           Sign in
         </button>
       </form>
+      Don't have an account? <a href="/signup">Sign up</a> for Free!
       </div>
+
       </div>
+<div className="row">
+      <div className="col-md-4">
+      <img src= "https://s3.amazonaws.com/i7san-test/svg/planting.svg" alt="Impact" id="side"/>
+      </div>
+
+       <div className="col-md-4">
+      <img src= "https://s3.amazonaws.com/i7san-test/svg/volunteer_world.svg" alt="Impact" id="side"/>
+      </div>
+
+       <div className="col-md-4">
+      <img src= "https://s3.amazonaws.com/i7san-test/svg/trend.svg" alt="Impact" id="side"/>
+      </div>
+
+      </div>
+
+      </div>
+
       </div>
     );
   }

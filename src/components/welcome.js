@@ -5,12 +5,12 @@ import SimpleSlider from './ui/slider.js';
 export class Welcome extends Component {
   render() {
     return (
-  <div>
+  <div className="main">
    <SimpleSlider />
    <h2 className="headerText">
         MAKE AN IMPACT VOLUNTEERING IN YOUR COMMUNITY!
 </h2>
-    <div className="container-fluid">
+ <div className="container-fluid">
     <div className="row">
 
     <div className="col-md-4">
@@ -68,7 +68,7 @@ export class Welcome extends Component {
       <Step.Content title='Track Your Volunteering Activities' description="Collect points, compete with your friends and stay motivated!" />
     </Step>
   <Step>
-    
+
 <img src= "https://s3.amazonaws.com/i7san-test/svg/impact.svg" alt="Impact"   />
 <Step.Content>
 <Step.Title>Measure Your Impact</Step.Title>
@@ -87,12 +87,14 @@ export class Welcome extends Component {
     <div className="col-md-12">
        
 
+    <a href="/volunteer">
     <Button animated='vertical' fluid className="button">
       <Button.Content hidden>MAKE A DIFFERENCE!</Button.Content>
       <Button.Content visible> START VOLUNTEERING!
         <Icon name='child' />
       </Button.Content>
     </Button>
+    </a>
 
     
     </div>

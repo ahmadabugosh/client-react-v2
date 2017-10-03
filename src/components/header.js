@@ -31,7 +31,7 @@ class Header extends Component {
       return [
         <li className="nav-item" key={1}>
           <Link to="/signin" className="nav-link">
-            Sign in
+            Sign In
           </Link>
         </li>,
         <li className="nav-item" key={2}>
@@ -45,6 +45,7 @@ class Header extends Component {
 
   render() {
     return (
+    
    
     	 <nav className="navbar navbar-inverse navbar-fixed-top">
   <div className="container">
@@ -57,6 +58,7 @@ class Header extends Component {
         </ul>
              </div>
 </nav>
+
 
     );
   }
