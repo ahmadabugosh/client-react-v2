@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import * as actions from '../actions';
 import axios from 'axios';
+import { Icon, Button} from 'semantic-ui-react';
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 // validation function, tests each field on change
@@ -88,7 +89,7 @@ class VolunteerForm extends Component {
   renderOptions() {
     const optionsList = this.state.activities.map(activity =>
       <option key={activity.shortUrl} value={activity.shortUrl}>
-        {activity.name} - {activity.points} Points / Hour
+        {activity.name} - {activity.points} Points For Every Hour Volunteered
       </option>
     );
 
@@ -115,20 +116,28 @@ class VolunteerForm extends Component {
           </div>
           <div>
             <br />
-            How many hours did you volunteer today?
+            <h4>How many hours did you volunteer?</h4>
             <Field placeholder="Number of Hours" name="hours" type="number" component={renderField} />
           </div>
-          <div>
+          <div className="textBox">
             <br />
-            Tell us about your experience!
+            <h4>Tell us about your volunteering experience!</h4>
             <Field placeholder="Short Description" name="description" textarea={true} component={renderField} />
           </div>
           <br />
+          <h4>Upload a picture / video of your volunteering (optional)</h4>
           {/* File upload field: sends file object to action creator */}
           {/* TODO: add validation for attached file */}
           <Field component={FileInput} name="file" />
+<br />
+<br />
 
-          <button type="submit">Record Your Volunteering</button>
+          <Button animated color='green' size='large' type='submit'>
+      <Button.Content visible>RECORD YOUR VOLUNTEERING!</Button.Content>
+      <Button.Content hidden>
+        <Icon name='like outline' />
+      </Button.Content>
+    </Button>
         </form>
       </div>
     );

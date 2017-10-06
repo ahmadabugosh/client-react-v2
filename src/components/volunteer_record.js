@@ -32,7 +32,7 @@ class VolunteerRecord extends Component {
   render() {
     return (
       <div>
-        <h3> Thanks for recording your volunteering activity! </h3>
+        <h3> Success! You just recorded a volunteering activity! </h3>
         <h3>
           {' '}<a href="./volunteer"> Volunteer More!</a>
         </h3>
