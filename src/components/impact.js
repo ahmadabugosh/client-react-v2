@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/';
-
 import { RingLoader } from 'react-spinners';
+import axios from 'axios';
+
+const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 class MyImpact extends Component {
   componentDidMount() {
@@ -10,6 +12,7 @@ class MyImpact extends Component {
       this.props.fetchMyUserInfo();
     }
     this.props.fetchMyImpact();
+    console.log("testing",this.props.fetchMyUserInfo());
   }
 
   render() {
@@ -17,7 +20,7 @@ class MyImpact extends Component {
       return <RingLoader color={'#123abc'} />;
     }
 
-    const { totalHours, totalPoints } = this.props.myImpact;
+    const { totalHours, totalPoints,economicImpact } = this.props.myImpact[0];
     const { username, followers } = this.props.loggedInUser;
 
     // TEMP ***************
@@ -34,53 +37,41 @@ class MyImpact extends Component {
 
     return (
       // TODO: remove inline styles
-      <div style={{ textAlign: 'left', minWidth: 800 }}>
+      <div className="container-fluid">
+
+    <div className="row">
         <h4>
           {username}&#8217;s Impact
         </h4>
+        </div>
+
+
         <div>
-          <img src={loremIpsumImageUrl} />
+          <img src= "https://s3.amazonaws.com/i7san-test/svg/volunteering.svg" alt="Volunteering" id="impactImage"  />
           <div style={tempDivStyle}>
+        
+              <h4>You volunteered <div className="impact">{totalHours}</div> Hours</h4>
+      
+            <h4>You have <div className="impact">{totalPoints}</div> Points </h4>
             <h4>
-              {totalHours} Volunteering Hours
+             The economic impact of your volunteering is equivalent to <div className="impact">${economicImpact}</div> 
             </h4>
-            <h4>You rank *Implement Rank* in Saudi Arabia</h4>
           </div>
-          <div style={tempDivStyle}>
-            {/* Render Dynamically */}
-            That&#8217;s enough time to watch 900 movies!
-          </div>
+      
         </div>
         <div>
-          <img src={loremIpsumImageUrl} />
+   <img src= "https://s3.amazonaws.com/i7san-test/svg/impact.svg" alt="Impact" id="impactImage"  />
           <div style={tempDivStyle}>
             <h4>
-              {followers.length} Friends
-            </h4>
-            <h5>
-              {/* You rank {friends.rank} among your friends */}
-            </h5>
-          </div>
-          <div style={tempDivStyle}>
-            {/* Render Dynamically */}
-            That&#8217;s enough people to make 10 football teams!
-          </div>
-        </div>
-        <div>
-          <img src={loremIpsumImageUrl} />
-          <div style={tempDivStyle}>
-            <h4>
-              {/* Your work impact is {workImpact.amount} {workImpact.currency} */}
+              You have <div className="impact"> {followers.length}</div> Followers 
             </h4>
             <h5>
-              {/* You rank ${volunteering.rank} in Saudi Arabia */}
+             
             </h5>
           </div>
-          <div style={tempDivStyle}>
-            {/* Render Dynamically */}
-            That&#8217;s enough to buy a Mercedes!
-          </div>
+         
         </div>
+      
       </div>
     );
   }

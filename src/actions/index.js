@@ -173,7 +173,7 @@ export function fetchUserInfo(username) {
   return dispatch => {
     dispatch(beginLoading());
     axios
-      .post(
+      .get(
         `${ROOT_URL}/user-info`,
         {
           username

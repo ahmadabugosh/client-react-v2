@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import * as actions from '../actions';
 import axios from 'axios';
-import { Icon, Button} from 'semantic-ui-react';
+import { Icon, Button,Dropdown } from 'semantic-ui-react';
+
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 // validation function, tests each field on change
@@ -113,6 +114,7 @@ class VolunteerForm extends Component {
             <Field placeholder="Volunteer Activity" name="activity" component={renderSelectField} required>
               {this.renderOptions()}
             </Field>
+            
           </div>
           <div>
             <br />

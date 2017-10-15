@@ -17,6 +17,18 @@ body {
 	 	color:dodgerblue;
 	 }
 
+.impact
+{
+	color:blue;
+	font-weight: 800;
+	 display: inline;
+}
+
+#impactImage{
+
+	height:250px;
+	vertical-align: center;
+}
 
 
 .error
