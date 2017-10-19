@@ -13,7 +13,7 @@ class Footer extends Component {
     
    <footer className="footer">
       
-        <span class="text-muted">Need help? Send us a message at: <a href="mailto:ahmadabugosh@gmail.com">contact@i7san.net</a> | ©2017 i7san</span>
+        <span className="text-muted">Need help? Send us a message at: <a href="mailto:ahmadabugosh@gmail.com">contact@i7san.net</a> | ©2017 i7san</span>
    
     </footer>
  

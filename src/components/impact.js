@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/';
 import { RingLoader } from 'react-spinners';
+import {Icon, Button} from 'semantic-ui-react';
 import axios from 'axios';
 
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
@@ -11,17 +12,32 @@ class MyImpact extends Component {
     if (!this.props.loggedInUser.username) {
       this.props.fetchMyUserInfo();
     }
+       this.props.fetchImpact();
     this.props.fetchMyImpact();
-    console.log("testing",this.props.fetchMyUserInfo());
+
+    
   }
 
   render() {
-    if (!this.props.loggedInUser.username || this.props.myImpact.totalHours === 'undefined') {
+    if (!this.props.loggedInUser.username || this.props.myImpact.totalHours === 'undefined' || this.props.impact.following === 'undefined') {
       return <RingLoader color={'#123abc'} />;
     }
 
-    const { totalHours, totalPoints,economicImpact } = this.props.myImpact[0];
-    const { username, followers } = this.props.loggedInUser;
+       function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+    const { totalHours, totalPoints,economicImpact,currency } = this.props.myImpact[0];
+
+    const {following,followers, followersHours, followersPoints, economicImpactFollowers}=this.props.impact[0];
+    const { username} = this.props.loggedInUser;
+    const {followerCurrency}=this.props.impact[0].currency;
+
+    const totalImpact= parseFloat(economicImpact +economicImpactFollowers);
+
+
+   
+
 
     // TEMP ***************
     const tempDivStyle = {
@@ -31,6 +47,10 @@ class MyImpact extends Component {
       marginRight: '10px',
       marginBottom: '50px'
     };
+
+    var h3Style = {
+  color: 'red'
+};
 
     const loremIpsumImageUrl = 'http://lorempixel.com/80/80';
     //**********************
@@ -46,7 +66,7 @@ class MyImpact extends Component {
         </div>
 
 
-        <div>
+           <div className="row">
           <img src= "https://s3.amazonaws.com/i7san-test/svg/volunteering.svg" alt="Volunteering" id="impactImage"  />
           <div style={tempDivStyle}>
         
@@ -54,16 +74,74 @@ class MyImpact extends Component {
       
             <h4>You have <div className="impact">{totalPoints}</div> Points </h4>
             <h4>
-             The economic impact of your volunteering is equivalent to <div className="impact">${economicImpact}</div> 
+             The economic impact of your volunteering is equivalent to <div className="impact">{currency} {economicImpact}</div> 
             </h4>
           </div>
-      
+
         </div>
-        <div>
+
+          <div className="row">
+          <h3 style={h3Style}> Volunteer more to increase your impact!</h3>
+          <a href="/volunteer">
+       <Button animated color='green' size='large'>
+      <Button.Content visible>VOLUNTEER MORE!</Button.Content>
+      <Button.Content hidden>
+        <Icon name='like outline' />
+      </Button.Content>
+    </Button>
+    </a>
+    </div>
+     <br/>
+    <br/>
+            <div className="row">
    <img src= "https://s3.amazonaws.com/i7san-test/svg/impact.svg" alt="Impact" id="impactImage"  />
           <div style={tempDivStyle}>
+           
             <h4>
-              You have <div className="impact"> {followers.length}</div> Followers 
+       Following <div className="impact"> {following}</div> 
+            </h4>
+             <h4>
+          Followers <div className="impact"> {followers}</div>
+            </h4>
+
+             <h4>
+          Followers Hours <div className="impact"> {followersHours}</div>
+            </h4>
+            <h4>
+          Followers Point <div className="impact"> {followersPoints}</div>
+            </h4>
+            <h4>
+             The economic impact of your followers network is equivalent to <div className="impact">{followerCurrency} {economicImpactFollowers}</div> 
+            </h4>
+
+             <h4>
+             Your total economic impact is equivalent to <div className="impact">{currency} {totalImpact}</div> 
+            </h4>
+            
+          </div>
+          
+         
+        </div>
+        <div className="row">
+        <h3 style={h3Style}> Grow your network to increase your impact!</h3>
+        <a href="/network">
+        <Button animated color='blue' size='large'>
+      <Button.Content visible>INCREASE YOUR NETWORK!</Button.Content>
+      <Button.Content hidden>
+        <Icon name='like outline' />
+      </Button.Content>
+    </Button>
+    </a>
+    </div>
+    <br/>
+    <br/>
+
+
+             <div className="row">
+   <img src= "https://s3.amazonaws.com/i7san-test/svg/badge.svg" alt="Badge" id="impactImage"  />
+          <div style={tempDivStyle}>
+            <h4>
+              You have <div className="impact">0</div> Badges
             </h4>
             <h5>
              
@@ -71,6 +149,7 @@ class MyImpact extends Component {
           </div>
          
         </div>
+
       
       </div>
     );
@@ -78,7 +157,7 @@ class MyImpact extends Component {
 }
 
 const mapStateToProps = state => {
-  return { loggedInUser: state.loggedInUser, myImpact: state.myImpact };
+  return { loggedInUser: state.loggedInUser, myImpact: state.myImpact, impact:state.impact };
 };
 
 export default connect(mapStateToProps, actions)(MyImpact);

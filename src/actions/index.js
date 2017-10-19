@@ -12,7 +12,8 @@ import {
   END_LOADING,
   FETCH_USER_INFO,
   STORE_LOGGED_IN_USER,
-  STORE_MY_IMPACT
+  STORE_MY_IMPACT,
+  STORE_IMPACT
 } from './types';
 
 export function signinUser({ email, password }, history) {
@@ -246,6 +247,26 @@ export function fetchMyImpact(username) {
       .then(response => {
         dispatch({
           type: STORE_MY_IMPACT,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+export function fetchImpact(username) {
+  return dispatch => {
+    axios
+      .request({
+        url: `${ROOT_URL}/impact`,
+        method: 'get',
+        headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(response => {
+        dispatch({
+          type: STORE_IMPACT,
           payload: response.data
         });
       })

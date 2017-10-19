@@ -4,6 +4,7 @@ import authReducer from './auth_reducer';
 import usersReducer from './users_reducer';
 import isLoadingReducer from './isLoading_reducer';
 import myImpactReducer from './myImpact_reducer';
+import impactReducer from './impact_reducer';
 import loggedInUserReducer from './loggedInUser_reducer';
 
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   users: usersReducer,
   myImpact: myImpactReducer,
+  impact:impactReducer,
   loggedInUser: loggedInUserReducer
 });
 

@@ -75,7 +75,7 @@ class VolunteerForm extends Component {
   }
 
   // get initial activities from server and update component's state
-  componentDidMount() {
+  componentWillMount() {
     axios.get(`${ROOT_URL}/activities`).then(response => {
       this.setState({ activities: response.data });
     });
@@ -114,7 +114,7 @@ class VolunteerForm extends Component {
             <Field placeholder="Volunteer Activity" name="activity" component={renderSelectField} required>
               {this.renderOptions()}
             </Field>
-            
+
           </div>
           <div>
             <br />
