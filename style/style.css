@@ -30,7 +30,21 @@ body {
 	vertical-align: center;
 }
 
+#connectImage{
 
+	height:250px;
+	vertical-align: center;
+	text-align: center;
+	display:inline-block;
+	margin: 0 auto;
+    width: 90%;
+}
+
+#profileimage
+{
+	width:50%;
+	height:50%;
+}
 .error
 {
 	color: red;
