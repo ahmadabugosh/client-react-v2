@@ -13,7 +13,8 @@ import {
   FETCH_USER_INFO,
   STORE_LOGGED_IN_USER,
   STORE_MY_IMPACT,
-  STORE_IMPACT
+  STORE_IMPACT,
+  STORE_USERS
 } from './types';
 
 export function signinUser({ email, password }, history) {
@@ -280,5 +281,28 @@ export function storeLoggedInUser(user) {
   return {
     type: STORE_LOGGED_IN_USER,
     payload: user
+  };
+}
+
+
+export function storeUsers(username) {
+  return dispatch => {
+  	dispatch(beginLoading());
+    axios
+      .request({
+        url: `${ROOT_URL}/follow`,
+        method: 'get',
+        headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(response => {
+      	  dispatch(endLoading());
+        dispatch({
+          type: STORE_USERS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 }

@@ -7,15 +7,106 @@ import axios from 'axios';
 
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
-const sizes = ['massive']
 
 
 class Network extends Component {
 
+    componentDidMount() {
+
+    this.props.storeUsers();
+   
+  }
+
+    renderUsers() {
+  const userData=this.props.allusers.map((user,index) =>
+  {
+
+if(user.username==="ahmadabugosh")
+{
+  return(
+<div className="row" > 
+ <div className="col-xs-6 col-md-6">   
+ 
+  <List divided horizontal size="massive">
+            <List.Item>
+              <Image avatar src='https://react.semantic-ui.com/assets/images/avatar/small/helen.jpg' />
+              <List.Content>
+                <List.Header>{user.username}</List.Header>
+              </List.Content>
+            </List.Item>
+            </List> 
+</div>
+
+
+ <div className="col-xs-6 col-md-2"> 
+<Button animated color='green' size='small' className="followButton" onClick={(event)=>alert(user.username)}>
+      <Button.Content visible>Followed</Button.Content>
+      <Button.Content hidden>
+        Unfollow
+      </Button.Content>
+    
+    </Button>
+    </div>
+    <br/>
+    <br/>
+
+
+</div>
+
+
+    );
+}
+
+else
+{
+  return(
+<div className="row" > 
+ <div className="col-xs-6 col-md-6">   
+ 
+  <List divided horizontal size="massive">
+            <List.Item>
+              <Image avatar src='https://react.semantic-ui.com/assets/images/avatar/small/helen.jpg' />
+              <List.Content>
+                <List.Header>{user.username}</List.Header>
+              </List.Content>
+            </List.Item>
+            </List> 
+</div>
+
+
+ <div className="col-xs-6 col-md-2"> 
+<Button animated color='blue' size='small' className="followButton" onClick={(event)=>alert(user.username)}>
+      <Button.Content visible>Follow</Button.Content>
+      <Button.Content hidden>
+        <Icon name='checkmark box' />
+      </Button.Content>
+    </Button>
+    </div>
+    <br/>
+    <br/>
+
+
+</div>
+
+  );
+}
+}   );
+
+  return userData;
+   }
+
 
   render() {
+    if (!this.props.allusers ||Object.keys(this.props.allusers).length === 0) {
+      return <RingLoader color={'#123abc'} />;
+    }
     
-    
+    else
+    {
+       const allusers = this.props.allusers;
+
+    console.log("The users are:",allusers);
+    }
 
 
 
@@ -28,6 +119,13 @@ class Network extends Component {
       marginBottom: '50px'
     };
 
+    const rowStyle =
+    {
+        width:'700px',
+        margin: '0 auto'
+        
+    };
+
     var h3Style = {
   color: 'red'
 };
@@ -36,6 +134,8 @@ class Network extends Component {
     //**********************
 
     return (
+
+
       // TODO: remove inline styles
       <div className="container-fluid">
 
@@ -44,45 +144,31 @@ class Network extends Component {
         <h1>
           Connect with members of the community to grow your network!
         </h1>
+        <h3> 
+        The more people follow you, the more points you get!
+        </h3>
         </div>
   <br />
-<div className="row">
 
-       
-   
-   
 
-         {sizes.map(size => (
-        <div key={size}>
-          <List divided horizontal size={size}>
-            <List.Item>
-              <Image avatar src='https://react.semantic-ui.com/assets/images/avatar/small/helen.jpg' />
-              <List.Content>
-                <List.Header>Helen</List.Header>
-              </List.Content>
-            </List.Item>
-            <List.Item>
-              <Image avatar src='https://react.semantic-ui.com/assets/images/avatar/small/christian.jpg' />
-              <List.Content>
-                <List.Header>Christian</List.Header>
-              </List.Content>
-            </List.Item>
-            <List.Item>
-              <Image avatar src='https://react.semantic-ui.com/assets/images/avatar/small/daniel.jpg' />
-              <List.Content>
-                <List.Header>Daniel</List.Header>
-              </List.Content>
-            </List.Item>
-          </List>
+      <div className="row" style={rowStyle}>
+    
+{this.renderUsers()}
 
-          <br />
+
+        
         </div>
-      ))}   
-   </div>
+
       
       </div>
     );
   }
 }
-export default Network;
+
+const mapStateToProps = state => {
+  return { allusers: state.allusers };
+};
+
+export default connect(mapStateToProps, actions)(Network);
+
 

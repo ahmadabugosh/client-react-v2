@@ -6,6 +6,7 @@ import isLoadingReducer from './isLoading_reducer';
 import myImpactReducer from './myImpact_reducer';
 import impactReducer from './impact_reducer';
 import loggedInUserReducer from './loggedInUser_reducer';
+import allusersreducer from './all_users_reducer';
 
 const rootReducer = combineReducers({
   form,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   users: usersReducer,
   myImpact: myImpactReducer,
   impact:impactReducer,
-  loggedInUser: loggedInUserReducer
+  loggedInUser: loggedInUserReducer,
+  allusers:allusersreducer
 });
 
 export default rootReducer;

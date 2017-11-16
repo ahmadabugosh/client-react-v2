@@ -5,6 +5,8 @@ import * as actions from '../actions';
 import axios from 'axios';
 import { Icon, Button,Dropdown } from 'semantic-ui-react';
 
+import { RingLoader } from 'react-spinners';
+
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 // validation function, tests each field on change
@@ -104,6 +106,10 @@ class VolunteerForm extends Component {
   }
 
   render() {
+
+    if (!this.state.activities|| this.state.activities === 'undefined' || this.state.activities === []) {
+      return <RingLoader color={'#123abc'} />;
+    }
     const { handleSubmit } = this.props;
     return (
       <div>
