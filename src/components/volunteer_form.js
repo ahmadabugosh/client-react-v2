@@ -107,11 +107,12 @@ class VolunteerForm extends Component {
 
   render() {
 
-    if (!this.state.activities|| this.state.activities === 'undefined' || this.state.activities === []) {
+    if (!this.state.activities || Object.keys(this.state.activities).length === 0) {
       return <RingLoader color={'#123abc'} />;
     }
     const { handleSubmit } = this.props;
     return (
+
       <div>
         <h1> Record Your Volunteering Activities!</h1>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
