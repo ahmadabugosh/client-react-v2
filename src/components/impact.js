@@ -14,12 +14,13 @@ class MyImpact extends Component {
     }
        this.props.fetchImpact();
     this.props.fetchMyImpact();
+    this.props.fetchFollowers();
 
     
   }
 
   render() {
-    if (!this.props.loggedInUser.username || this.props.myImpact.totalHours === 'undefined' || this.props.impact.following === 'undefined') {
+    if (!this.props.loggedInUser.username || this.props.myImpact.totalHours === 'undefined' || this.props.impact.following === 'undefined' || this.props.followerCount.followers==='undefined') {
       return <RingLoader color={'#123abc'} />;
     }
 
@@ -29,8 +30,9 @@ class MyImpact extends Component {
 
     const { totalHours, totalPoints,economicImpact,currency } = this.props.myImpact[0];
 
-    const {following,followers, followersHours, followersPoints, economicImpactFollowers}=this.props.impact[0];
+    const {followersHours, followersPoints, economicImpactFollowers}=this.props.impact[0];
     const { username} = this.props.loggedInUser;
+    const {following,followers}= this.props.followerCount;
     const {followerCurrency}=this.props.impact[0].currency;
 
     const totalImpact= parseFloat(economicImpact +economicImpactFollowers);
@@ -157,7 +159,7 @@ class MyImpact extends Component {
 }
 
 const mapStateToProps = state => {
-  return { loggedInUser: state.loggedInUser, myImpact: state.myImpact, impact:state.impact };
+  return { loggedInUser: state.loggedInUser, myImpact: state.myImpact, impact:state.impact, followerCount:state.followerCount };
 };
 
 export default connect(mapStateToProps, actions)(MyImpact);

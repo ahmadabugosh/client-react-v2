@@ -14,7 +14,8 @@ import {
   STORE_LOGGED_IN_USER,
   STORE_MY_IMPACT,
   STORE_IMPACT,
-  STORE_USERS
+  STORE_USERS,
+  FETCH_FOLLOWERS
 } from './types';
 
 export function signinUser({ email, password }, history) {
@@ -268,6 +269,26 @@ export function fetchImpact(username) {
       .then(response => {
         dispatch({
           type: STORE_IMPACT,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+export function fetchFollowers(username) {
+  return dispatch => {
+    axios
+      .request({
+        url: `${ROOT_URL}/follow-count`,
+        method: 'get',
+        headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(response => {
+        dispatch({
+          type: FETCH_FOLLOWERS,
           payload: response.data
         });
       })

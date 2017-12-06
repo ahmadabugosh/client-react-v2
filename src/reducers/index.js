@@ -7,6 +7,7 @@ import myImpactReducer from './myImpact_reducer';
 import impactReducer from './impact_reducer';
 import loggedInUserReducer from './loggedInUser_reducer';
 import allusersreducer from './all_users_reducer';
+import followerCountReducer from './followers_reducer';
 
 const rootReducer = combineReducers({
   form,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   myImpact: myImpactReducer,
   impact:impactReducer,
   loggedInUser: loggedInUserReducer,
-  allusers:allusersreducer
+  allusers:allusersreducer,
+  followerCount: followerCountReducer
 });
 
 export default rootReducer;
