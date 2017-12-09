@@ -9,16 +9,16 @@ const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 
 
-class Network extends Component {
+class Follow extends Component {
 
     componentDidMount() {
 
-    this.props.storeUsers();
+    this.props.storeFollow();
    
   }
 
     renderUsers() {
-  const userData=this.props.followingusers.map((user,index) =>
+  const userData=this.props.followusers.map((user,index) =>
   {
 
 if(user.username==="ahmadabugosh")
@@ -97,15 +97,15 @@ else
 
 
   render() {
-    if (!this.props.followingusers ||Object.keys(this.props.followingusers).length === 0) {
+    if (!this.props.followusers ||Object.keys(this.props.followusers).length === 0) {
       return <RingLoader color={'#123abc'} />;
     }
     
     else
     {
-       const followingusers = this.props.followingusers;
+       const followusers = this.props.followusers;
 
-    console.log("The users are:",followingusers);
+    console.log("The users are:",followusers);
     }
 
 
@@ -150,7 +150,7 @@ else
         </div>
   <br />
 
-<h2> Following </h2>
+<h2> Follow Your Friends To Increase Your Network! </h2>
       <div className="row" style={rowStyle}>
     
 {this.renderUsers()}
@@ -166,9 +166,9 @@ else
 }
 
 const mapStateToProps = state => {
-  return { followingusers: state.followingusers };
+  return { followusers: state.followusers };
 };
 
-export default connect(mapStateToProps, actions)(Network);
+export default connect(mapStateToProps, actions)(Follow);
 
 

@@ -15,7 +15,8 @@ import {
   STORE_MY_IMPACT,
   STORE_IMPACT,
   STORE_USERS,
-  FETCH_FOLLOWERS
+  FETCH_FOLLOWERS,
+  STORE_FOLLOW
 } from './types';
 
 export function signinUser({ email, password }, history) {
@@ -311,14 +312,40 @@ export function storeUsers(username) {
   	dispatch(beginLoading());
     axios
       .request({
-        url: `${ROOT_URL}/follow`,
+        url: `${ROOT_URL}/my-following`,
         method: 'get',
         headers: { authorization: localStorage.getItem('token') }
       })
       .then(response => {
+      	console.log("Response data is", response.data);
       	  dispatch(endLoading());
         dispatch({
           type: STORE_USERS,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+
+
+export function storeFollow(username) {
+  return dispatch => {
+  	dispatch(beginLoading());
+    axios
+      .request({
+        url: `${ROOT_URL}/my-not-following`,
+        method: 'get',
+        headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(response => {
+      	console.log("Response data is", response.data);
+      	  dispatch(endLoading());
+        dispatch({
+          type: STORE_FOLLOW,
           payload: response.data
         });
       })

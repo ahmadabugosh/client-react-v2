@@ -28,7 +28,7 @@ class MyImpact extends Component {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-    const { totalHours, totalPoints,economicImpact,currency } = this.props.myImpact[0];
+    const { totalPoints, totalHours,economicImpact,currency } = this.props.myImpact[0];
 
     const {followersHours, followersPoints, economicImpactFollowers}=this.props.impact[0];
     const { username} = this.props.loggedInUser;

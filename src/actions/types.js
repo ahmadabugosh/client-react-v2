@@ -12,3 +12,4 @@ export const STORE_LOGGED_IN_USER = 'store_logged_in_user';
 export const STORE_MY_IMPACT = 'store_my_impact';
 export const STORE_IMPACT = 'store_impact';
 export const STORE_USERS = 'store_users';
+export const STORE_FOLLOW = 'store_follow';
