@@ -4,6 +4,7 @@ import * as actions from '../actions/';
 import { RingLoader } from 'react-spinners';
 import {Icon, Button,Image, List} from 'semantic-ui-react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
@@ -151,6 +152,15 @@ else
   <br />
 
 <h2> Follow Your Friends To Increase Your Network! </h2>
+
+<div className="row">
+ <Button.Group floated='left'>
+     <Link to="/network" > <Button>Following</Button></Link>
+      <Button>Followers</Button>
+      <Button positive>Connect With Others</Button>
+    </Button.Group>
+    </div>
+
       <div className="row" style={rowStyle}>
     
 {this.renderUsers()}

@@ -4,22 +4,21 @@ import * as actions from '../actions/';
 import { RingLoader } from 'react-spinners';
 import {Icon, Button,Image, List} from 'semantic-ui-react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 
 
-class Network extends Component {
+class Follow extends Component {
 
     componentDidMount() {
 
-    this.props.storeUsers();
+    this.props.storeFollow();
    
   }
 
     renderUsers() {
-  const userData=this.props.followingusers.map((user,index) =>
+  const userData=this.props.followusers.map((user,index) =>
   {
 
 if(user.username==="ahmadabugosh")
@@ -98,15 +97,15 @@ else
 
 
   render() {
-    if (!this.props.followingusers ||Object.keys(this.props.followingusers).length === 0) {
+    if (!this.props.followusers ||Object.keys(this.props.followusers).length === 0) {
       return <RingLoader color={'#123abc'} />;
     }
     
     else
     {
-       const followingusers = this.props.followingusers;
+       const followusers = this.props.followusers;
 
-    console.log("The users are:",followingusers);
+    console.log("The users are:",followusers);
     }
 
 
@@ -146,20 +145,12 @@ else
           Connect with members of the community to grow your network!
         </h1>
         <h3> 
-        The more people that follow you, the more points you get!
+        The more people follow you, the more points you get!
         </h3>
         </div>
   <br />
-  <h2>Who You're Following </h2>
- <div className="row">
- <Button.Group floated='left'>
-      <Button positive>Following</Button>
-      <Button>Followers</Button>
-      <Link to="/follow" > <Button>Connect With Others</Button></Link>
-    </Button.Group>
-    </div>
- 
-    <br/>
+
+<h2> Follow Your Friends To Increase Your Network! </h2>
       <div className="row" style={rowStyle}>
     
 {this.renderUsers()}
@@ -175,9 +166,9 @@ else
 }
 
 const mapStateToProps = state => {
-  return { followingusers: state.followingusers };
+  return { followusers: state.followusers };
 };
 
-export default connect(mapStateToProps, actions)(Network);
+export default connect(mapStateToProps, actions)(Follow);
 
 

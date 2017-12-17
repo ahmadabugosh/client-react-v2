@@ -117,7 +117,7 @@ body {
 
 .container-fluid {
     margin: auto 0px;
-    max-width: 1400px;
+    max-width: 100%;
     margin-top: 35px;
     min-height:100%;
 }

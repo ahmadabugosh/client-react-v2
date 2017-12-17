@@ -354,3 +354,27 @@ export function storeFollow(username) {
       });
   };
 }
+
+
+export function storeFollowers(username) {
+  return dispatch => {
+  	dispatch(beginLoading());
+    axios
+      .request({
+        url: `${ROOT_URL}/my-followers`,
+        method: 'get',
+        headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(response => {
+      	console.log("Response data is", response.data);
+      	  dispatch(endLoading());
+        dispatch({
+          type: STORE_FOLLOW,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
