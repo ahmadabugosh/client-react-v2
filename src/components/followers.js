@@ -4,12 +4,13 @@ import * as actions from '../actions/';
 import { RingLoader } from 'react-spinners';
 import {Icon, Button,Image, List} from 'semantic-ui-react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 
 
-class Follow extends Component {
+class Followers extends Component {
 
     componentDidMount() {
 
@@ -150,7 +151,15 @@ else
         </div>
   <br />
 
-<h2> Follow Your Friends To Increase Your Network! </h2>
+<h2> See Who's Following You </h2>
+
+<div className="row">
+ <Button.Group floated='left'>
+     <Link to="/network" ><Button>Following</Button></Link>
+      <Button positive>Followers</Button>
+     <Link to="/follow" > <Button>Connect With Others</Button></Link>
+    </Button.Group>
+    </div>
       <div className="row" style={rowStyle}>
     
 {this.renderUsers()}
@@ -169,6 +178,6 @@ const mapStateToProps = state => {
   return { followusers: state.followusers };
 };
 
-export default connect(mapStateToProps, actions)(Follow);
+export default connect(mapStateToProps, actions)(Followers);
 
 

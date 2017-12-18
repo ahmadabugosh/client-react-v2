@@ -155,8 +155,8 @@ else
 
 <div className="row">
  <Button.Group floated='left'>
-     <Link to="/network" > <Button>Following</Button></Link>
-      <Button>Followers</Button>
+  <Link to="/network"> <Button>Following</Button></Link>
+     <Link to="/followers"> <Button>Followers</Button></Link>
       <Button positive>Connect With Others</Button>
     </Button.Group>
     </div>

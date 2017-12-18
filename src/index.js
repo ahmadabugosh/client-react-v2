@@ -13,6 +13,7 @@ import Impact from './components/impact';
 import App from './components/app';
 import Network from './components/network';
 import Follow from './components/follow';
+import Followers from './components/followers';
 import Footer from './components/footer';
 import VolunteerForm from './components/volunteer_form';
 import reduxThunk from 'redux-thunk';
@@ -54,6 +55,7 @@ ReactDOM.render(
         <Route path="/volunteering-success" component={VolunteerRecord} />
         <Route path="/network" component={RequireAuth(Network)} />
         <Route path="/follow" component={RequireAuth(Follow)} />
+         <Route path="/followers" component={RequireAuth(Followers)} />
         <Route path="/user/:username" component={UserProfilePublic} />
         <Route path="/" component={Footer} />
   
