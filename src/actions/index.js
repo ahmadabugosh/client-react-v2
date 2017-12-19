@@ -16,7 +16,8 @@ import {
   STORE_IMPACT,
   STORE_USERS,
   FETCH_FOLLOWERS,
-  STORE_FOLLOW
+  STORE_FOLLOW,
+  STORE_FOLLOWERS
 } from './types';
 
 export function signinUser({ email, password }, history) {
@@ -369,7 +370,7 @@ export function storeFollowers(username) {
       	console.log("Response data is", response.data);
       	  dispatch(endLoading());
         dispatch({
-          type: STORE_FOLLOW,
+          type: STORE_FOLLOWERS,
           payload: response.data
         });
       })

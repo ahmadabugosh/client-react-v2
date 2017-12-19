@@ -9,6 +9,7 @@ import loggedInUserReducer from './loggedInUser_reducer';
 import followingusersreducer from './following_reducer';
 import followerCountReducer from './followers_reducer';
 import followUsersReducer from './follow_reducer';
+import followerReducer from './follower_reducer';
 
 
 const rootReducer = combineReducers({
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   loggedInUser: loggedInUserReducer,
   followingusers:followingusersreducer,
   followerCount: followerCountReducer,
-  followusers: followUsersReducer
+  followusers: followUsersReducer,
+  followerusers: followerReducer
 });
 
 export default rootReducer;

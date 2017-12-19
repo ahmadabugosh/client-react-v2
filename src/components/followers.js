@@ -14,12 +14,12 @@ class Followers extends Component {
 
     componentDidMount() {
 
-    this.props.storeFollow();
+    this.props.storeFollowers();
    
   }
 
     renderUsers() {
-  const userData=this.props.followusers.map((user,index) =>
+  const userData=this.props.followerusers.map((user,index) =>
   {
 
 if(user.username==="ahmadabugosh")
@@ -98,7 +98,7 @@ else
 
 
   render() {
-    if (!this.props.followusers ||Object.keys(this.props.followusers).length === 0) {
+    if (!this.props.followerusers ||Object.keys(this.props.followerusers).length === 0) {
       return <RingLoader color={'#123abc'} />;
     }
     
@@ -175,7 +175,7 @@ else
 }
 
 const mapStateToProps = state => {
-  return { followusers: state.followusers };
+  return { followerusers: state.followerusers };
 };
 
 export default connect(mapStateToProps, actions)(Followers);
