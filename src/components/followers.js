@@ -22,8 +22,9 @@ class Followers extends Component {
   const userData=this.props.followerusers.map((user,index) =>
   {
 
-if(user.username==="ahmadabugosh")
-{
+
+
+
   return(
 <div className="row" > 
  <div className="col-xs-6 col-md-6">   
@@ -39,50 +40,6 @@ if(user.username==="ahmadabugosh")
 </div>
 
 
- <div className="col-xs-6 col-md-2"> 
-<Button animated color='green' size='small' className="followButton" onClick={(event)=>alert(user.username)}>
-      <Button.Content visible>Followed</Button.Content>
-      <Button.Content hidden>
-        Unfollow
-      </Button.Content>
-    
-    </Button>
-    </div>
-    <br/>
-    <br/>
-
-
-</div>
-
-
-    );
-}
-
-else
-{
-  return(
-<div className="row" > 
- <div className="col-xs-6 col-md-6">   
- 
-  <List divided horizontal size="massive">
-            <List.Item>
-              <Image avatar src='https://react.semantic-ui.com/assets/images/avatar/small/helen.jpg' />
-              <List.Content>
-                <List.Header>{user.username}</List.Header>
-              </List.Content>
-            </List.Item>
-            </List> 
-</div>
-
-
- <div className="col-xs-6 col-md-2"> 
-<Button animated color='blue' size='small' className="followButton" onClick={(event)=>alert(user.username)}>
-      <Button.Content visible>Follow</Button.Content>
-      <Button.Content hidden>
-        <Icon name='checkmark box' />
-      </Button.Content>
-    </Button>
-    </div>
     <br/>
     <br/>
 
@@ -90,7 +47,7 @@ else
 </div>
 
   );
-}
+
 }   );
 
   return userData;
