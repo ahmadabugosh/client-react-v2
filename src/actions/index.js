@@ -17,7 +17,8 @@ import {
   STORE_USERS,
   FETCH_FOLLOWERS,
   STORE_FOLLOW,
-  STORE_FOLLOWERS
+  STORE_FOLLOWERS,
+  FOLLOW_A_USER
 } from './types';
 
 export function signinUser({ email, password }, history) {
@@ -232,7 +233,7 @@ export function followUser(username) {
         }
       )
       .then(response => {
-        // TODO: display success message to user
+        console.log("Great success!");
       })
       .catch(err => {
         console.log(err);

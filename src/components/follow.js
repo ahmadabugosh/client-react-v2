@@ -76,7 +76,7 @@ else
 
 
  <div className="col-xs-6 col-md-2"> 
-<Button animated color='blue' size='small' className="followButton" onClick={(event)=>alert(user.username)}>
+<Button animated color='blue' size='small' className="followButton" onClick={(event)=>this.props.followUser(user.username)}>
       <Button.Content visible>Follow</Button.Content>
       <Button.Content hidden>
         <Icon name='checkmark box' />
