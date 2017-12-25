@@ -12,6 +12,75 @@ const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 class Follow extends Component {
 
+constructor(props) {
+    super(props);
+
+    this.state = {
+     active: []
+    };
+
+    this.changeColor = this.changeColor.bind(this);
+    this.myColor = this.myColor.bind(this);
+    this.myText=this.myText.bind(this);
+    this.myFollowText=this.myFollowText.bind(this);
+  }
+
+  
+  changeColor(position) {
+    if(this.state.active[position]===position)
+    {
+      let array1=this.state.active.slice();
+      array1[position]=null;
+  this.setState({ active: array1});
+    }
+    else
+    {
+      let array2=this.state.active.slice();
+      array2[position]=position;
+      this.setState({ active: array2});
+    }
+    
+   
+  }
+
+  myColor(position){
+   if (this.state.active[position] === position) {
+      return "red";
+    }
+    else 
+    {
+      return "blue";
+    }   
+
+  }
+
+   myText(position){
+   if (this.state.active[position] === position) {
+      return "Following";
+    }
+    else 
+    {
+      return "Follow";
+    }   
+
+  }
+
+
+  myFollowText(position){
+   if (this.state.active[position] === position) {
+      return "UnFollow";
+    }
+    else 
+    {
+      return <Icon name='checkmark box' />;
+    }   
+
+  }
+
+
+
+
+
     componentDidMount() {
 
     this.props.storeFollow();
@@ -22,8 +91,9 @@ class Follow extends Component {
   const userData=this.props.followusers.map((user,index) =>
   {
 
-if(user.username==="ahmadabugosh")
-{
+
+
+
   return(
 <div className="row" > 
  <div className="col-xs-6 col-md-6">   
@@ -40,46 +110,10 @@ if(user.username==="ahmadabugosh")
 
 
  <div className="col-xs-6 col-md-2"> 
-<Button animated color='green' size='small' className="followButton" onClick={(event)=>alert(user.username)}>
-      <Button.Content visible>Followed</Button.Content>
+<Button animated color={this.myColor(index)} size='small' className="followButton" onClick={(event)=>this.changeColor(index)}>
+      <Button.Content visible>{this.myText(index)}</Button.Content>
       <Button.Content hidden>
-        Unfollow
-      </Button.Content>
-    
-    </Button>
-    </div>
-    <br/>
-    <br/>
-
-
-</div>
-
-
-    );
-}
-
-else
-{
-  return(
-<div className="row" > 
- <div className="col-xs-6 col-md-6">   
- 
-  <List divided horizontal size="massive">
-            <List.Item>
-              <Image avatar src='https://react.semantic-ui.com/assets/images/avatar/small/helen.jpg' />
-              <List.Content>
-                <List.Header>{user.username}</List.Header>
-              </List.Content>
-            </List.Item>
-            </List> 
-</div>
-
-
- <div className="col-xs-6 col-md-2"> 
-<Button animated color='blue' size='small' className="followButton" onClick={(event)=>this.props.followUser(user.username)}>
-      <Button.Content visible>Follow</Button.Content>
-      <Button.Content hidden>
-        <Icon name='checkmark box' />
+        {this.myFollowText(index)}
       </Button.Content>
     </Button>
     </div>
@@ -90,7 +124,7 @@ else
 </div>
 
   );
-}
+
 }   );
 
   return userData;
