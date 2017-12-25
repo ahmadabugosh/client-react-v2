@@ -19,6 +19,16 @@ class Followers extends Component {
   }
 
     renderUsers() {
+
+   if(Object.keys(this.props.followerusers).length >= 0)
+
+      {
+       return( <h4> No one is following you yet...</h4>);
+      }
+
+      else
+      {
+
   const userData=this.props.followerusers.map((user,index) =>
   {
 
@@ -51,11 +61,12 @@ class Followers extends Component {
 }   );
 
   return userData;
+}
    }
 
 
   render() {
-    if (!this.props.followerusers ||Object.keys(this.props.followerusers).length === 0) {
+    if (!this.props.followerusers) {
       return <RingLoader color={'#123abc'} />;
     }
     

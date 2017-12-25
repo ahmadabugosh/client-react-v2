@@ -19,6 +19,19 @@ class Network extends Component {
   }
 
     renderUsers() {
+
+          if(Object.keys(this.props.followingusers).length >= 0)
+
+      {
+       return( <h4> You are not following anyone yet...</h4>);
+      }
+
+      else
+      {
+
+
+
+
   const userData=this.props.followingusers.map((user,index) =>
   {
 
@@ -60,11 +73,12 @@ class Network extends Component {
 }   );
 
   return userData;
+}
    }
 
 
   render() {
-    if (!this.props.followingusers ||Object.keys(this.props.followingusers).length === 0) {
+    if (!this.props.followingusers ) {
       return <RingLoader color={'#123abc'} />;
     }
     
@@ -127,6 +141,8 @@ class Network extends Component {
  
     <br/>
       <div className="row" style={rowStyle}>
+
+  
     
 {this.renderUsers()}
 
