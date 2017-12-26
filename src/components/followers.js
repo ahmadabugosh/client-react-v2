@@ -20,7 +20,7 @@ class Followers extends Component {
 
     renderUsers() {
 
-   if(Object.keys(this.props.followerusers).length >= 0)
+   if(Object.keys(this.props.followerusers).length === 0)
 
       {
        return( <h4> No one is following you yet...</h4>);

@@ -20,7 +20,7 @@ class Network extends Component {
 
     renderUsers() {
 
-          if(Object.keys(this.props.followingusers).length >= 0)
+          if(Object.keys(this.props.followingusers).length === 0)
 
       {
        return( <h4> You are not following anyone yet...</h4>);
