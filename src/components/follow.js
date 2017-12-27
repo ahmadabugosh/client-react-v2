@@ -23,6 +23,7 @@ constructor(props) {
     this.myColor = this.myColor.bind(this);
     this.myText=this.myText.bind(this);
     this.myFollowText=this.myFollowText.bind(this);
+    this.follow=this.follow.bind(this);
   }
 
   
@@ -77,6 +78,16 @@ constructor(props) {
 
   }
 
+  follow(username,position)
+
+  {
+
+    this.props.followUser(username);
+    this.changeColor(position);
+
+
+  }
+
 
 
 
@@ -84,6 +95,7 @@ constructor(props) {
     componentDidMount() {
 
     this.props.storeFollow();
+
    
   }
 
@@ -110,7 +122,7 @@ constructor(props) {
 
 
  <div className="col-xs-6 col-md-2"> 
-<Button animated color={this.myColor(index)} size='small' className="followButton" onClick={(event)=>this.changeColor(index)}>
+<Button animated color={this.myColor(index)} size='small' className="followButton" onClick={(event)=>this.follow(this.props.followusers[index].username,index)}>
       <Button.Content visible>{this.myText(index)}</Button.Content>
       <Button.Content hidden>
         {this.myFollowText(index)}
