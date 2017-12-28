@@ -46,7 +46,7 @@ constructor(props) {
 
   myColor(position){
    if (this.state.active[position] === position) {
-      return "red";
+      return "green";
     }
     else 
     {
@@ -81,9 +81,20 @@ constructor(props) {
   follow(username,position)
 
   {
+       this.changeColor(position);
 
-    this.props.followUser(username);
-    this.changeColor(position);
+
+if (this.state.active[position] === position) {
+      this.props.unfollowUser(username); 
+
+}
+
+else
+{
+this.props.followUser(username);
+}
+    
+ 
 
 
   }
@@ -100,6 +111,14 @@ constructor(props) {
   }
 
     renderUsers() {
+
+       if(Object.keys(this.props.followusers).length === 0)
+
+      {
+       return( <h4> There is no one left to follow...</h4>);
+      }
+      else
+      {
   const userData=this.props.followusers.map((user,index) =>
   {
 
@@ -136,15 +155,17 @@ constructor(props) {
 </div>
 
   );
+  
 
 }   );
 
   return userData;
+  }
    }
 
 
   render() {
-    if (!this.props.followusers ||Object.keys(this.props.followusers).length === 0) {
+    if (!this.props.followusers) {
       return <RingLoader color={'#123abc'} />;
     }
     

@@ -241,6 +241,30 @@ export function followUser(username) {
   };
 }
 
+
+// TODO: Follow function not working
+export function unfollowUser(username) {
+  return dispatch => {
+    axios
+      .post(
+        `${ROOT_URL}/unfollow`,
+        {
+          username
+        },
+        {
+          headers: { authorization: localStorage.getItem('token') }
+        }
+      )
+      .then(response => {
+        console.log("Great success!");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+
 export function fetchMyImpact(username) {
   return dispatch => {
     axios

@@ -11,6 +11,91 @@ const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 
 class Network extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+     active: []
+    };
+
+    this.changeColor = this.changeColor.bind(this);
+    this.myColor = this.myColor.bind(this);
+    this.myText=this.myText.bind(this);
+    this.myFollowText=this.myFollowText.bind(this);
+    this.follow=this.follow.bind(this);
+  }
+
+  
+  changeColor(position) {
+    if(this.state.active[position]===position)
+    {
+      let array1=this.state.active.slice();
+      array1[position]=null;
+  this.setState({ active: array1});
+    }
+    else
+    {
+      let array2=this.state.active.slice();
+      array2[position]=position;
+      this.setState({ active: array2});
+    }
+    
+   
+  }
+
+  myColor(position){
+   if (this.state.active[position] === position) {
+      return "blue";
+    }
+    else 
+    {
+      return "green";
+    }   
+
+  }
+
+   myText(position){
+   if (this.state.active[position] === position) {
+      return "Follow";
+    }
+    else 
+    {
+      return "Following";
+    }   
+
+  }
+
+
+  myFollowText(position){
+   if (this.state.active[position] === position) {
+      return <Icon name='checkmark box' />;
+    }
+    else 
+    {
+      return "UnFollow";
+    }   
+
+  }
+
+  follow(username,position)
+
+  {
+
+     this.changeColor(position);
+
+
+if (this.state.active[position] === position) {
+      this.props.followUser(username); 
+
+}
+
+else
+{
+this.props.unfollowUser(username);
+}
+
+
+  }
 
     componentDidMount() {
 
@@ -52,12 +137,11 @@ class Network extends Component {
 
 
  <div className="col-xs-6 col-md-2"> 
-<Button animated color='green' size='small' className="followButton" onClick={(event)=>alert(user.username)}>
-      <Button.Content visible>Followed</Button.Content>
+<Button animated color={this.myColor(index)} size='small' className="followButton" onClick={(event)=>this.follow(this.props.followingusers[index].username,index)}>
+      <Button.Content visible>{this.myText(index)}</Button.Content>
       <Button.Content hidden>
-        Unfollow
+        {this.myFollowText(index)}
       </Button.Content>
-    
     </Button>
     </div>
     <br/>
