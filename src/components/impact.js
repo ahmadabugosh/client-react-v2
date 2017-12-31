@@ -28,15 +28,20 @@ class MyImpact extends Component {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-    const { totalPoints, totalHours,economicImpact,currency } = this.props.myImpact[0];
+    let { totalPoints, totalHours,economicImpact,currency } = this.props.myImpact[0];
 
-    const {followersHours, followersPoints, economicImpactFollowers}=this.props.impact[0];
+    let {followersHours, followersPoints, economicImpactFollowers}=this.props.impact[0];
     const { username} = this.props.loggedInUser;
     const {following,followers}= this.props.followerCount;
     const {followerCurrency}=this.props.impact[0].currency;
+    const x=parseFloat(economicImpact);
+    const y=parseFloat(economicImpactFollowers);
 
-    const totalImpact= parseFloat(economicImpact +economicImpactFollowers);
+    economicImpact=numberWithCommas(economicImpact);
+    economicImpactFollowers=numberWithCommas(economicImpactFollowers);
 
+  let totalImpact= x+y;
+totalImpact=numberWithCommas(totalImpact);
 
    
 
@@ -113,7 +118,7 @@ class MyImpact extends Component {
           Followers Point <div className="impact"> {followersPoints}</div>
             </h4>
             <h4>
-             The economic impact of your followers network is equivalent to <div className="impact">{followerCurrency} {economicImpactFollowers}</div> 
+             The economic impact of your followers network is equivalent to <div className="impact">{currency} {economicImpactFollowers}</div> 
             </h4>
 
              <h4>
