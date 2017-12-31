@@ -16,11 +16,15 @@ class Header extends Component {
           </Link>
         </li>,
         <li className="nav-item" key={2}>
+          <Link to="/network" className="nav-link">
+            Network
+          </Link>
+        </li>,   <li className="nav-item" key={3}>
           <Link to="/my-impact" className="nav-link">
             My Impact
           </Link>
         </li>,
-        <li className="nav-item" key={3}>
+        <li className="nav-item" key={4}>
           <Link to="/signout" className="nav-link">
             Sign Out
           </Link>

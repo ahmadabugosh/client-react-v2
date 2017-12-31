@@ -214,6 +214,11 @@ height:50px;
 
 }
 
+a:active {
+    outline: 0;
+    color: blue;
+}
+
 
 
 /*

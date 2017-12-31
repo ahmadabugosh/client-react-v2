@@ -22,6 +22,7 @@ import reducers from './reducers';
 import RequireAuth from './components/auth/require_auth';
 
 import Feature from './components/feature';
+import Start from './components/start';
 import Welcome from './components/welcome';
 
 import VolunteerRecord from './components/volunteer_record';
@@ -48,6 +49,7 @@ ReactDOM.render(
         <Route exact path="/" component={Welcome} />
         <Route path="/signin" component={Signin} />
         <Route path="/feature" component={RequireAuth(Feature)} />
+        <Route path="/start" component={RequireAuth(Start)} />
         <Route path="/signout" component={Signout} />
         <Route path="/signup" component={Signup} />
         <Route path="/volunteer" component={RequireAuth(VolunteerForm)} />
