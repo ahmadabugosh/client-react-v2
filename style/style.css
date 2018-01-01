@@ -220,6 +220,25 @@ a:active {
 }
 
 
+.myGrid
+
+{
+	display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: 240px;
+}
+
+
+.startHeader
+{
+	margin-top:50px !important;
+	margin-bottom:50px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+
 
 /*
 	@media screen and (max-width: 1500px) {

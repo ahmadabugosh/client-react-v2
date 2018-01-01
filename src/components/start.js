@@ -5,50 +5,39 @@ import SimpleSlider from './ui/slider.js';
 export class Start extends Component {
   render() {
     return (
-  <div className="main">
+  <div>
    
-   <h2 className="headerText">
+   <h2 className="startHeader">
         MAKE AN IMPACT VOLUNTEERING IN YOUR COMMUNITY!
 </h2>
 
- <div className="container-fluid">
-    <div className="row">
 
-    <div className="col-md-4">
+ <div className="myGrid">
+<div>
 
       <Header as='h2' icon>
     <Icon name='users' />
     The Largest Online Volunteering Community
     
   </Header>
+
   </div>
-
-  <div className="col-md-4">
-    	
-
+<div>
       <Header as='h2' icon>
     <Icon name='heartbeat' />
    Find Organization & Causes You Care About
    
   </Header>
+</div>
 
-  </div>
+<div>
 
-  <div className="col-md-4">
       <Header as='h2' icon>
     <Icon name='line graph' />
    Track Your Volunteering & Social Impact
   </Header>
-  </div>
-      
-
-      
-  
-     
-  </div>
-    
-   </div>
-
+</div>
+</div>
       </div>
     );
   }
