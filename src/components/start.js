@@ -3,6 +3,22 @@ import { Header, Icon, Button, Step } from 'semantic-ui-react';
 import SimpleSlider from './ui/slider.js';
 
 export class Start extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      categories: []
+    };
+  }
+
+    componentWillMount() {
+    axios.get(`${ROOT_URL}/categories`).then(response => {
+      this.setState({ categories: response.data });
+    });
+  }
+
+
   render() {
     return (
   <div>
