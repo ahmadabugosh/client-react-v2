@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Header, Icon, Button, Step } from 'semantic-ui-react';
 import SimpleSlider from './ui/slider.js';
+import axios from 'axios';
+const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 export class Start extends Component {
 
@@ -54,6 +56,8 @@ export class Start extends Component {
   </Header>
 </div>
 </div>
+
+{this.state.categories}
       </div>
     );
   }
