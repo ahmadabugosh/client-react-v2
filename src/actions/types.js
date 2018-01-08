@@ -15,3 +15,4 @@ export const STORE_USERS = 'store_users';
 export const STORE_FOLLOW = 'store_follow';
 export const STORE_FOLLOWERS = 'store_followers';
 export const FOLLOW_A_USER = 'follow_a_user';
+export const STORE_CATEGORIES = 'follow_a_user';

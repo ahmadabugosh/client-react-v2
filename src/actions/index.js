@@ -18,7 +18,8 @@ import {
   FETCH_FOLLOWERS,
   STORE_FOLLOW,
   STORE_FOLLOWERS,
-  FOLLOW_A_USER
+  FOLLOW_A_USER,
+  STORE_CATEGORIES
 } from './types';
 
 export function signinUser({ email, password }, history) {
@@ -404,3 +405,29 @@ export function storeFollowers(username) {
       });
   };
 }
+
+export function storeCategories() {
+  return dispatch => {
+  	dispatch(beginLoading());
+    axios
+      .request({
+        url: `${ROOT_URL}/categories`,
+        method: 'get',
+        headers: { authorization: localStorage.getItem('token') }
+      })
+      .then(response => {
+      	console.log("Response data is", response.data);
+      	  dispatch(endLoading());
+        dispatch({
+          type: STORE_CATEGORIES,
+          payload: response.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
+
+

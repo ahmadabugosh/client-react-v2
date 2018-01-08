@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions/';
 import { Header, Icon, Button, Step } from 'semantic-ui-react';
 import SimpleSlider from './ui/slider.js';
 import axios from 'axios';
@@ -6,22 +8,19 @@ const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 export class Start extends Component {
 
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      categories: []
-    };
+
+      componentDidMount() {
+
+    this.props.storeCategories();
+   
   }
 
-    componentWillMount() {
-    axios.get(`${ROOT_URL}/categories`).then(response => {
-      this.setState({ categories: response.data });
-    });
-  }
 
 
   render() {
+
+
     return (
   <div>
    
@@ -57,9 +56,13 @@ export class Start extends Component {
 </div>
 </div>
 
-{this.state.categories}
+{this.categories}
       </div>
     );
   }
 }
-export default Start;
+const mapStateToProps = state => {
+  return { categories: state.categories };
+};
+
+export default connect(mapStateToProps, actions)(Start);
