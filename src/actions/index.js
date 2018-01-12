@@ -19,7 +19,8 @@ import {
   STORE_FOLLOW,
   STORE_FOLLOWERS,
   FOLLOW_A_USER,
-  STORE_CATEGORIES
+  STORE_CATEGORIES,
+  CURRENT_CATEGORY
 } from './types';
 
 export function signinUser({ email, password }, history) {
@@ -426,6 +427,15 @@ export function storeCategories() {
       .catch(err => {
         console.log(err);
       });
+  };
+}
+
+
+
+export function currentCategory(cat) {
+   return {
+    type: CURRENT_CATEGORY,
+    payload: cat
   };
 }
 

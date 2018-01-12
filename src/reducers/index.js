@@ -11,6 +11,7 @@ import followerCountReducer from './followers_reducer';
 import followUsersReducer from './follow_reducer';
 import followerReducer from './follower_reducer';
 import categoriesReducer from './categories_reducer';
+import categoryReducer from './category_reducer';
 
 
 const rootReducer = combineReducers({
@@ -25,7 +26,8 @@ const rootReducer = combineReducers({
   followerCount: followerCountReducer,
   followusers: followUsersReducer,
   followerusers: followerReducer,
-  categories:categoriesReducer
+  categories:categoriesReducer,
+  category:categoryReducer
 });
 
 export default rootReducer;

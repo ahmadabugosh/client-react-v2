@@ -34,24 +34,14 @@ renderCategories(){
 
 
   return(
-<div className="row" > 
- <div className="col-xs-6 col-md-6">   
+
+ <div className="col-xs-3 col-md-3">   
  
-  <List divided horizontal size="massive">
-            <List.Item>
-            
-              <List.Content>
-                <List.Header>{cat}</List.Header>
-              </List.Content>
-            </List.Item>
-            </List> 
-</div>
-
-
-    <br/>
-    <br/>
-
-
+<Button color='blue' size='large' >
+      <Button.Content visible>
+        {cat}
+      </Button.Content>
+    </Button>
 </div>
 
   );
@@ -111,8 +101,9 @@ if (!this.props.categories) {
 </div>
 
 
-
+<div className="row" > 
    {this.renderCategories()}
+   </div>
    
       </div>
  
