@@ -35,9 +35,9 @@ renderCategories(){
 
   return(
 
- <div className="col-xs-3 col-md-3">   
+ <div>   
  
-<Button color='blue' size='large' >
+<Button color='blue' size='large' className='buttonCenter' >
       <Button.Content visible>
         {cat}
       </Button.Content>
@@ -69,39 +69,14 @@ if (!this.props.categories) {
 
 
 <h2 className="startHeader">
-        MAKE AN IMPACT VOLUNTEERING IN YOUR COMMUNITY!
+        First Step, Choose Your Volunteering Category
 </h2>
 
 
- <div className="myGrid">
-<div>
-
-      <Header as='h2' icon>
-    <Icon name='users' />
-    The Largest Online Volunteering Community
-    
-  </Header>
-
-  </div>
-<div>
-      <Header as='h2' icon>
-    <Icon name='heartbeat' />
-   Find Organization & Causes You Care About
-   
-  </Header>
-</div>
-
-<div>
-
-      <Header as='h2' icon>
-    <Icon name='line graph' />
-   Track Your Volunteering & Social Impact
-  </Header>
-</div>
-</div>
 
 
-<div className="row" > 
+
+<div className="myGrid" > 
    {this.renderCategories()}
    </div>
    
