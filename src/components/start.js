@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions/';
-import { Header, Icon, Button, Step,List } from 'semantic-ui-react';
+import { Header, Icon, Button, Step,List, Image } from 'semantic-ui-react';
 import SimpleSlider from './ui/slider.js';
 import axios from 'axios';
 import { RingLoader } from 'react-spinners';
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
-export class Start extends Component {
-
-
+class Start extends Component {
 
       componentDidMount() {
 
@@ -23,7 +21,6 @@ renderCategories(){
 
       {
        return( <h4> Loading...</h4>);
-        console.log(this.props.categories);
       }
 
 
@@ -36,12 +33,13 @@ renderCategories(){
   return(
 
  <div>   
- 
-<Button color='blue' size='large' className='buttonCenter' >
+               <Image size='tiny' src={cat.mediaUrl} />
+<Button color='blue' size='large' className='buttonCenter' onClick={(event)=>this.props.currentCategory(cat.name)} >
       <Button.Content visible>
-        {cat}
+        {cat.name}
       </Button.Content>
     </Button>
+    <p>{cat.description}</p>
 </div>
 
   );

@@ -20,7 +20,7 @@ import {
   STORE_FOLLOWERS,
   FOLLOW_A_USER,
   STORE_CATEGORIES,
-  CURRENT_CATEGORY
+  CURRENT_CATEGORY  
 } from './types';
 
 export function signinUser({ email, password }, history) {

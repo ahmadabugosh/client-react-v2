@@ -227,6 +227,7 @@ a:active {
     grid-gap: 5px;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     grid-auto-rows: 240px;
+    padding-left:8px;
 }
 
 
