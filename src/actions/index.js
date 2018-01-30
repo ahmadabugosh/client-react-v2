@@ -430,12 +430,17 @@ export function storeCategories() {
   };
 }
 
-
-
-export function currentCategory(cat) {
-   return {
+export function theCategory(cat) {
+ return {
     type: CURRENT_CATEGORY,
     payload: cat
+  };
+}
+
+export function currentCategory(cat, history) {
+   return dispatch => {
+  	dispatch(theCategory(cat));
+
   };
 }
 

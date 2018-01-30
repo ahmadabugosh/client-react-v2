@@ -248,6 +248,12 @@ a:active {
 	margin: 0 auto !important;
 }
 
+.currentCat
+{
+
+	color:purple;
+}
+
 
 /*
 	@media screen and (max-width: 1500px) {

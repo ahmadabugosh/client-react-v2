@@ -87,7 +87,7 @@ export class Welcome extends Component {
     <div className="col-md-12">
        
 
-    <a href="/volunteer">
+    <a href="/start">
     <Button animated='vertical' fluid className="button">
       <Button.Content hidden>MAKE A DIFFERENCE!</Button.Content>
       <Button.Content visible> START VOLUNTEERING!

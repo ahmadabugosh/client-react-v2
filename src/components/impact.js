@@ -89,7 +89,7 @@ totalImpact=numberWithCommas(totalImpact);
 
           <div className="row">
           <h3 style={h3Style}> Volunteer more to increase your impact!</h3>
-          <a href="/volunteer">
+          <a href="/start">
        <Button animated color='green' size='large'>
       <Button.Content visible>VOLUNTEER MORE!</Button.Content>
       <Button.Content hidden>

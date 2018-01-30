@@ -11,7 +11,7 @@ class Header extends Component {
       return [
      
         <li className="nav-item" key={1}>
-          <Link to="/volunteer" className="nav-link">
+          <Link to="/start" className="nav-link">
             Volunteer
           </Link>
         </li>,

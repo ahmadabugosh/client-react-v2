@@ -4,7 +4,9 @@ import * as actions from '../actions/';
 import { Header, Icon, Button, Step,List, Image } from 'semantic-ui-react';
 import SimpleSlider from './ui/slider.js';
 import axios from 'axios';
+import { withRouter } from 'react-router'
 import { RingLoader } from 'react-spinners';
+import { Link } from 'react-router-dom';
 const ROOT_URL = 'https://i7san-api.herokuapp.com';
 
 class Start extends Component {
@@ -14,6 +16,8 @@ class Start extends Component {
     this.props.storeCategories();
    
   }
+
+
 
 renderCategories(){
 
@@ -33,12 +37,17 @@ renderCategories(){
   return(
 
  <div>   
+<Link to="/volunteer">
                <Image size='tiny' src={cat.mediaUrl} />
-<Button color='blue' size='large' className='buttonCenter' onClick={(event)=>this.props.currentCategory(cat.name)} >
+                    
+<Button color='blue' size='large' className='buttonCenter' onClick={(event)=>this.props.currentCategory(cat.name,this.props.history)} >
+ 
       <Button.Content visible>
         {cat.name}
       </Button.Content>
     </Button>
+    </Link>
+ 
     <p>{cat.description}</p>
 </div>
 
@@ -87,7 +96,7 @@ if (!this.props.categories) {
 
 }
 const mapStateToProps = state => {
-  return { categories: state.categories };
+  return { categories: state.categories, category:state.category };
 };
 
 export default connect(mapStateToProps, actions)(Start);

@@ -78,6 +78,9 @@ class VolunteerForm extends Component {
 
   // get initial activities from server and update component's state
   componentWillMount() {
+
+   
+
     axios.get(`${ROOT_URL}/activities`).then(response => {
       this.setState({ activities: response.data });
     });
@@ -111,10 +114,13 @@ class VolunteerForm extends Component {
       return <RingLoader color={'#123abc'} />;
     }
     const { handleSubmit } = this.props;
+     const {name} = this.props.category;
+
+    console.log("My category is",name);
     return (
 
       <div>
-        <h1> Record Your Volunteering Activities!</h1>
+        <h1> Choose the Available <div className="currentCat">{name}</div> Volunteering Activities!</h1>
         <form onSubmit={handleSubmit(this.handleFormSubmit)}>
           {/* form body */}
           <div>
@@ -153,7 +159,12 @@ class VolunteerForm extends Component {
   }
 }
 
-export default connect(null, actions)(
+const mapStateToProps = state => {
+  return { category: state.category };
+};
+
+
+export default connect(mapStateToProps, actions)(
   reduxForm({
     form: 'volunteer',
     validate,

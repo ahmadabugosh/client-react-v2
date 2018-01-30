@@ -43,7 +43,7 @@ if (token) {
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router >
       <div>
         <Route path="/" component={App} />
         <Route exact path="/" component={Welcome} />
