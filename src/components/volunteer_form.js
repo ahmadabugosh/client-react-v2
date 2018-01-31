@@ -92,20 +92,52 @@ class VolunteerForm extends Component {
     this.props.recordVolunteerActivity({ ...fields }, totalPoints, this.props.history);
   }
 
-  renderOptions() {
-    const optionsList = this.state.activities.map(activity =>
+  renderOptions(category) {
+
+    if(category)
+    {
+
+      const chosenActivity = this.state.activities.filter(activity =>
+activity.category.name==category
+    );
+
+   let optionsList = chosenActivity.map(activity =>
       <option key={activity.shortUrl} value={activity.shortUrl}>
         {activity.name} - {activity.points} Points For Every Hour Volunteered
       </option>
     );
 
-    // add blank first option, acts as placeholder text for select field component
+        // add blank first option, acts as placeholder text for select field component
     optionsList.unshift(
       <option key="title" value="" selected>
         Choose A Volunteer Activity
       </option>
     );
-    return optionsList;
+     return optionsList;
+
+    }
+
+    else
+    {
+  let optionsList = this.state.activities.map(activity =>
+      <option key={activity.shortUrl} value={activity.shortUrl}>
+        {activity.name} - {activity.points} Points For Every Hour Volunteered
+      </option>
+ );
+
+     // add blank first option, acts as placeholder text for select field component
+    optionsList.unshift(
+      <option key="title" value="" selected>
+        Choose A Volunteer Activity
+      </option>
+    );
+     return optionsList;
+    }
+
+
+
+
+   
   }
 
   render() {
@@ -125,7 +157,7 @@ class VolunteerForm extends Component {
           {/* form body */}
           <div>
             <Field placeholder="Volunteer Activity" name="activity" component={renderSelectField} required>
-              {this.renderOptions()}
+              {this.renderOptions(name)}
             </Field>
 
           </div>
