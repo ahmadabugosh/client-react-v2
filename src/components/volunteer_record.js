@@ -35,9 +35,9 @@ class VolunteerRecord extends Component {
     <div className="container-fluid">
         <h2> Success! You just recorded a volunteering activity! </h2>
 
-        <div className="row">
+     <div className="myGrid1" >
 
-           <div className="col-md-6" id="column1">
+           <div>
          <img src= "https://s3.amazonaws.com/i7san-test/svg/report.svg" id="image1"  />
          <a href="./my-impact">
           <Button animated color='blue' size='huge' id="button2">
@@ -50,10 +50,10 @@ class VolunteerRecord extends Component {
         </div>
 
 
-      <div className="col-md-6" id="column1">
+      <div>
          <img src= "https://s3.amazonaws.com/i7san-test/svg/success.svg" id="image1" />
          <a href="./volunteer">
-          <Button animated color='green' size='huge' id="button2">
+          <Button animated color='green' size='huge' id="button3">
       <Button.Content visible>RECORD MORE VOLUNTEERING!</Button.Content>
       <Button.Content hidden>
         <Icon name='child' /> VOLUNTEER

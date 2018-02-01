@@ -40,7 +40,7 @@ class Feature extends Component {
 			<div>
 			<div className="container-fluid">
 				<h2>Welcome to i7san!</h2>
-<p> You're one step away from tracking your impact and volunteering! The first step is to record your first volunteering activity. </p>
+<h3> You're one step away from tracking your impact and volunteering! The first step is to record your first volunteering activity. </h3>
 				<a href="./start">
 				  <Button animated color='blue' size='huge'>
       <Button.Content visible>GET STARTED!</Button.Content>
