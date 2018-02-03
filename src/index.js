@@ -24,14 +24,13 @@ import RequireAuth from './components/auth/require_auth';
 import Feature from './components/feature';
 import Start from './components/start';
 import Welcome from './components/welcome';
-import {composeWithDevTools} from 'redux-devtools-extension';
 
 import VolunteerRecord from './components/volunteer_record';
 
 import { AUTH_USER } from './actions/types';
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-const store = createStoreWithMiddleware(reducers,composeWithDevTools());
+const store = createStoreWithMiddleware(reducers);
 
 store.subscribe(() => {
   console.log(store.getState());
