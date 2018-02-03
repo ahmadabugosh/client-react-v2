@@ -4,6 +4,19 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {Image,Label,Dropdown} from 'semantic-ui-react';
+
+const trigger = (
+  <span>
+    <Image avatar src="https://react.semantic-ui.com/assets/images/avatar/small/stevie.jpg" size="tiny" /> My Profile
+  </span>
+)
+
+const options = [
+  {as:'a', href:'/my-impact', key: 'impact', text: 'My Impact', icon: 'universal access'},
+  { as:'a', href:'/signout',key: 'sign-out', text: 'Sign Out', icon: 'sign out' },
+]
+
 
 class Header extends Component {
   renderLinks() {
@@ -19,15 +32,10 @@ class Header extends Component {
           <Link to="/network" className="nav-link">
             Network
           </Link>
-        </li>,   <li className="nav-item" key={3}>
-          <Link to="/my-impact" className="nav-link">
-            My Impact
-          </Link>
         </li>,
-        <li className="nav-item" key={4}>
-          <Link to="/signout" className="nav-link">
-            Sign Out
-          </Link>
+              <li className="nav-item dropdown" key={5}>
+          <Dropdown trigger={trigger} options={options} pointing='top left' icon={null}  />
+        
         </li>
 
       ];
@@ -57,7 +65,7 @@ class Header extends Component {
         <Link to="/" className="navbar-brand">
           {' '}<img src="https://s3.ap-south-1.amazonaws.com/i7san/i7san+logo.png" width="65" height="65" /><p id="logo-text">i7san</p>{' '}
         </Link>
-        <ul className="nav navbar-nav">
+        <ul className="nav navbar-nav mr-auto">
           {this.renderLinks()}
         </ul>
              </div>
