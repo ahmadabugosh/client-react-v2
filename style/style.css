@@ -18,6 +18,12 @@ body {
     }
 }
 
+@media only screen and (max-width: 450px) {
+    body {
+        padding-top: 190px;
+    }
+}
+
 
 	 h1{
 
