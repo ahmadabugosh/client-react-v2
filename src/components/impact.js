@@ -64,7 +64,7 @@ totalImpact=numberWithCommas(totalImpact);
 
     return (
       // TODO: remove inline styles
-      <div className="container-fluid">
+      <div className="container-fluid" id="impactContainer">
 
     <div className="row">
         <h4>
