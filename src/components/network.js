@@ -186,7 +186,6 @@ this.props.unfollowUser(username);
 
     const rowStyle =
     {
-        width:'700px',
         margin: '0 auto'
         
     };

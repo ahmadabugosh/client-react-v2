@@ -90,7 +90,7 @@ class Followers extends Component {
 
     const rowStyle =
     {
-        width:'700px',
+
         margin: '0 auto'
         
     };

@@ -24,7 +24,7 @@ renderCategories(){
      if(Object.keys(this.props.categories).length === 0)
 
       {
-       return( <h4> Loading...</h4>);
+       return <RingLoader color={'#123abc'} />;
       }
 
 

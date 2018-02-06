@@ -152,6 +152,8 @@ body {
     max-width: 100%;
     margin-top: 35px;
     min-height:100%;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 h2 {
 
@@ -318,6 +320,12 @@ a:active {
 #impactContainer
 {
 	padding-left: 30px;
+	padding-right: 20px;
+}
+
+.ui.button
+{
+	padding: 1em 1em;
 }
 
 
