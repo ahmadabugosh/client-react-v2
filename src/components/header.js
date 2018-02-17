@@ -63,7 +63,7 @@ class Header extends Component {
   <div className="container">
 
         <Link to="/" className="navbar-brand">
-          {' '}<img src="https://s3.ap-south-1.amazonaws.com/i7san/i7san+logo.png" width="65" height="65" /><p id="logo-text">i7san</p>{' '}
+          {' '}<img src="https://s3.ap-south-1.amazonaws.com/i7san/i7san%2Blogo.png" width="65" height="65" /><p id="logo-text">i7san</p>{' '}
         </Link>
         <ul className="nav navbar-nav mr-auto">
           {this.renderLinks()}

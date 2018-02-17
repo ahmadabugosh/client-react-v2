@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactDOMServer from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -41,7 +42,7 @@ if (token) {
   store.dispatch({ type: AUTH_USER });
 }
 
-ReactDOM.render(
+ ReactDOM.render(
   <Provider store={store}>
     <Router >
       <div>
@@ -67,3 +68,37 @@ ReactDOM.render(
   </Provider>,
   document.querySelector('.container')
 );
+
+
+
+
+ ReactDOMServer.renderToString(
+  <Provider store={store}>
+    <Router >
+      <div>
+        <Route path="/" component={App} />
+        <Route exact path="/" component={Welcome} />
+        <Route path="/signin" component={Signin} />
+        <Route path="/feature" component={RequireAuth(Feature)} />
+        <Route path="/start" component={RequireAuth(Start)} />
+        <Route path="/signout" component={Signout} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/volunteer" component={RequireAuth(VolunteerForm)} />
+        <Route path="/my-impact" component={RequireAuth(Impact)} />
+        <Route path="/volunteering-success" component={VolunteerRecord} />
+        <Route path="/network" component={RequireAuth(Network)} />
+        <Route path="/follow" component={RequireAuth(Follow)} />
+         <Route path="/followers" component={RequireAuth(Followers)} />
+        <Route path="/user/:username" component={UserProfilePublic} />
+        <Route path="/" component={Footer} />
+  
+
+      </div>
+    </Router>
+  </Provider>,
+  document.querySelector('.container')
+);
+
+
+
+
