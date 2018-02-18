@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin")
 const path = require('path');
 
 const config = {
@@ -44,7 +45,9 @@ const config = {
     new ExtractTextPlugin('styles.css'),
     new HtmlWebpackPlugin({
       template: 'index.html'
-    })
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
+    new CompressionPlugin()
   ],
   devServer: {
     historyApiFallback: true,
@@ -55,7 +58,7 @@ const config = {
 
 // For Production
 
-if (process.env.NODE_ENV === 'production') {
+
   config.plugins.push(
     new webpack.DefinePlugin({
       'process.env': {
@@ -64,6 +67,6 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.optimize.UglifyJsPlugin()
   );
-}
+
 
 module.exports = config;

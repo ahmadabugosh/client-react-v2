@@ -1,0 +1,364 @@
+html {
+    position: relative;
+    height: 100%;
+}
+
+body { 
+	padding-top: 110px;
+	min-height:100%;
+	  position:relative; 
+	   display:flex; 
+  flex-direction:row; 
+
+	  
+	 }
+@media only screen and (max-width: 650px) {
+    body {
+        padding-top: 160px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    body {
+        padding-top: 190px;
+    }
+}
+
+
+	 h1{
+
+	 	color:dodgerblue;
+	 }
+
+.impact
+{
+	color:blue;
+	font-weight: 800;
+	 display: inline;
+}
+
+#impactImage{
+
+	height:250px;
+	vertical-align: center;
+}
+
+#connectImage{
+
+	height:250px;
+	vertical-align: center;
+	text-align: center;
+	display:inline-block;
+	margin: 0 auto;
+    width: 90%;
+}
+
+#profileimage
+{
+	width:50%;
+	height:50%;
+}
+.error
+{
+	color: red;
+}
+
+#slider1 
+{
+	width:100%;
+	max-height: 300px;
+	margin-top:50px;
+
+}
+
+
+.container 
+
+{
+	max-width:100%;
+	min-height:100%;
+	padding-right: 0;
+	padding-left:0;
+
+
+}
+
+.slide {
+  position: relative;
+}
+
+.slide__caption {
+    left: 0;
+   
+    z-index: 2;
+    width: auto;
+    color: #fff;
+    padding: 25px;
+    max-width: 100%;
+    font-size: 45px;
+    min-height: 20px;
+    min-width: 200px;
+ 
+    font-weight: bolder;
+    text-align: center;
+    text-shadow: 0 0 5px black;
+ 
+    display: block;
+}
+
+
+#logo-text{
+
+	text-align:center;
+	margin: auto 0px;
+	display: block;
+	color:#333;
+}
+
+.navbar-nav .nav-link
+{
+
+	color:#333;
+	font-size:30px;
+	margin-top:20px;
+}
+
+.navbar-nav:hover .nav-link:hover
+{
+
+	color:blue;
+}
+
+.navbar-nav:active .nav-link:active
+{
+
+	color:blue !important;
+}
+
+.navbar-fixed-top {
+    top: 0;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.ui.dropdown .menu>.item
+
+{
+
+	    font-size: 1.5rem;
+}
+
+.container-fluid {
+    margin: auto 0px;
+    max-width: 100%;
+    margin-top: 35px;
+    min-height:100%;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+h2 {
+
+	font-size:40px;
+	color:#333333;
+}
+.headerText{
+			text-align: center;
+			margin: auto;
+			display: block;
+
+}
+
+#heading1
+{
+
+padding:30px;
+}
+#heading1
+{
+
+padding:15px;
+}
+
+.ui.fluid.button {
+    display: block;
+    color: #333;
+    background-color:#B2D500;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+
+#center{
+
+	padding-left: 30px;
+}
+
+#side{
+
+	height:300px;
+	vertical-align: center;
+}
+.main{
+	padding:10px;
+  padding-bottom:60px;
+
+}
+
+.ui.icon.header {
+    display: block;
+ 
+}
+textarea {
+    overflow: auto;
+    width: 100%;
+    height: 100px;
+}
+
+
+
+.nav-item.dropdown
+{
+float:right;
+	padding-right: 15px;
+	padding-top:15px;
+	font-size: 20px;
+
+}
+
+
+.textBox{
+
+	width:300px;
+}
+
+#image1
+{
+	height:100%;
+	width:100%;
+}
+
+#button2 {
+
+	margin-top:-120px;
+	margin-left:30px;
+	}
+
+	#button3 {
+
+	margin-top:-120px;
+	margin-left:60px;
+	}
+
+
+.footer {
+
+ margin-top:auto; 
+height:50px;
+  background-color: #efefef;
+  text-align: center;
+  vertical-align: center;
+   padding: 1rem;
+   margin-top:10px;
+}
+
+.followButton
+{
+    margin-top: 18px !important;
+
+}
+
+a:active {
+    outline: 0;
+    color: blue;
+}
+
+
+.myGrid
+
+{
+	display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-auto-rows: 240px;
+    padding-left:8px;
+}
+
+.myGrid1
+
+{
+	display: grid;
+    grid-gap: 8px;
+    grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
+    grid-auto-rows: 600px;
+    padding-left:8px;
+    padding-right:8px;
+}
+
+
+.startHeader
+{
+	margin-top:50px !important;
+	margin-bottom:50px;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+
+.buttonCenter
+
+{
+
+	display:block !important;
+	margin: 0 auto !important;
+}
+
+.currentCat
+{
+
+	color:purple;
+}
+
+#impactContainer
+{
+	padding-left: 30px;
+	padding-right: 20px;
+}
+
+.ui.button
+{
+	padding: 1em 1em;
+}
+
+
+/*
+	@media screen and (max-width: 1500px) {
+		#sliderText{
+			text-align: center;
+			margin: auto;
+			display: block;
+
+color:red;
+}
+
+
+}
+
+	@media screen and (max-width: 768px) {
+		#sliderText{
+color:yellow;
+}
+
+
+}
+ 
+@media screen and (max-width: 568px) {
+	#sliderText{
+       color:blue;
+   }
+  
+}*/
+
+
+
+
+
+
