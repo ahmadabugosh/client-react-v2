@@ -1,1 +1,1 @@
-# Client React Application To Connect With Node JS API with authentication using JWT
+# Client React Application To Connect With Node JS API with authentication using JWT. Ongoing project
