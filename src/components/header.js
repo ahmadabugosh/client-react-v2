@@ -25,7 +25,7 @@ class Header extends Component {
      
         <li className="nav-item" key={1}>
           <Link to="/start" className="nav-link">
-            Volunteer
+            Donate
           </Link>
         </li>,
         <li className="nav-item" key={2}>

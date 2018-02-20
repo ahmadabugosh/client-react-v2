@@ -76,7 +76,7 @@ if (!this.props.categories) {
 
 
 <h2 className="startHeader">
-        First Step, Choose Your Volunteering Category
+        First Step, Choose The Area You'd Like To Contribute To
 </h2>
 
 
